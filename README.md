@@ -15,6 +15,22 @@
 </p>
 
 <p align="center">
+  <a href="skills/dont-panic/SKILL.md">[dont-panic]</a>
+  &middot;
+  <a href="skills/bound-the-ask/SKILL.md">[bound-the-ask]</a>
+  &middot;
+  <a href="skills/pack-light/SKILL.md">[pack-light]</a>
+  &middot;
+  <a href="skills/prove-it/SKILL.md">[prove-it]</a>
+  &middot;
+  <a href="skills/find-the-fault/SKILL.md">[find-the-fault]</a>
+  &middot;
+  <a href="skills/subtract/SKILL.md">[subtract]</a>
+</p>
+
+
+<p align="center">
+  <sub>Thinking tools leveraged by Don't Panic!</sub><br>
   <a href="thinking-tools.md#issue-trees">[Issue trees]</a>
   &middot;
   <a href="thinking-tools.md#inversion">[Inversion]</a>
@@ -32,31 +48,6 @@
   <a href="thinking-tools.md#minto-pyramid">[Minto Pyramid]</a>
   &middot;
   <a href="thinking-tools.md#test-bar">[Test bar]</a>
-</p>
-
-<p align="center">
-  <a href="skills/dont-panic/SKILL.md">[dont-panic]</a>
-  &middot;
-  <a href="skills/bound-the-ask/SKILL.md">[bound-the-ask]</a>
-  &middot;
-  <a href="skills/pack-light/SKILL.md">[pack-light]</a>
-  &middot;
-  <a href="skills/prove-it/SKILL.md">[prove-it]</a>
-  &middot;
-  <a href="skills/find-the-fault/SKILL.md">[find-the-fault]</a>
-  &middot;
-  <a href="skills/subtract/SKILL.md">[subtract]</a>
-</p>
-
-<p align="center">
-  <sub>Noteworthy projects inspiring this project</sub><br>
-  <a href="https://ponytail.dev">[ponytail]</a>
-  &middot;
-  <a href="https://github.com/obra/superpowers">[superpowers]</a>
-  &middot;
-  <a href="https://github.com/bmad-code-org/BMAD-METHOD">[BMAD Method]</a>
-  &middot;
-  <a href="https://github.com/sudoconnor/first-principles-engineering">[first-principles-engineering]</a>
 </p>
 
 ---
@@ -151,3 +142,7 @@ After editing skill bodies or OpenClaw blurbs:
 ```bash
 ./scripts/build-openclaw-skills.sh
 ```
+
+## Thanks
+Noteworthy projects inspiring this project:
+<a href="https://ponytail.dev">[ponytail]</a> &middot; <a href="https://github.com/obra/superpowers">[superpowers]</a> &middot; <a href="https://github.com/bmad-code-org/BMAD-METHOD">[BMAD Method]</a> &middot; <a href="https://github.com/sudoconnor/first-principles-engineering">[first-principles-engineering]</a>
