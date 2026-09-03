@@ -1,0 +1,41 @@
+{
+  "name": "dont-panic",
+  "version": "1.0.0",
+  "description": "Smallest trusted slice for coding agents. Bound the ask, pack light, prove it, find the fault, then subtract.",
+  "author": {
+    "name": "Tony Sappe",
+    "url": "https://github.com/tony-sappe"
+  },
+  "homepage": "https://github.com/tony-sappe/dont-panic",
+  "repository": "https://github.com/tony-sappe/dont-panic",
+  "license": "MIT",
+  "keywords": [
+    "yagni",
+    "spec",
+    "verification",
+    "debugging",
+    "refactor",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Don't Panic",
+    "shortDescription": "Bound the ask. Pack light. Prove it. Subtract.",
+    "longDescription": "A portable skill collection for Grok Build and Codex. Get the question right, choose the smallest trusted system, refuse done without evidence, debug with one experiment at a time, and simplify without changing behavior.",
+    "developerName": "Tony Sappe",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://github.com/tony-sappe/dont-panic",
+    "defaultPrompt": [
+      "Use Don't Panic full for this task.",
+      "Bound the ask before we design.",
+      "Find the smallest trusted design.",
+      "Prove this change before we call it done."
+    ],
+    "brandColor": "#F5C518",
+    "composerIcon": "./assets/dont-panic.jpg",
+    "logo": "./assets/dont-panic.jpg"
+  }
+}
