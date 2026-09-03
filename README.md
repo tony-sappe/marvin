@@ -5,13 +5,13 @@
 <h1 align="center">Don't Panic!</h1>
 
 <p align="center">
-  <em>Searching for the Question while navigating the improbability of AI!</em>
+  <em>Skills required to navigate the improbability of AI! (towel optional)</em>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/skills-6-F5C518?style=flat-square&labelColor=111111" alt="6 skills">
   <img src="https://img.shields.io/badge/hosts-Grok%20%7C%20Codex%20%7C%20Claude%20%7C%20Cursor%20%2B-111111?style=flat-square" alt="Works across coding agents">
-  <img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
 </p>
 
 <p align="center">
@@ -28,9 +28,8 @@
   <a href="skills/subtract/SKILL.md">[subtract]</a>
 </p>
 
-
 <p align="center">
-  <sub>Thinking tools leveraged by Don't Panic!</sub><br>
+  <sub>Thinking guide</sub><br>
   <a href="thinking-tools.md#issue-trees">[Issue trees]</a>
   &middot;
   <a href="thinking-tools.md#inversion">[Inversion]</a>
@@ -54,61 +53,50 @@
 
 <p align="center">
   <strong>Bound the ask. Pack light. Prove it. Find the fault. Subtract.</strong><br>
-  <sub>Portable Agent Skills — one <code>skills/</code> tree, thin host adapters, identical bytes.</sub>
+  <sub>A small Agent Skills collection that bounds the scope, travels light, and refuses &ldquo;done&rdquo; without proof.</sub>
 </p>
 
 ## Install
 
-Plugin hosts: **Grok Build**, **Codex**, **Claude Code**.  
-Discovery adapters in-repo: **Cursor**, **Windsurf**, **OpenClaw**, plus `.agents/skills/`.  
-**Hermes:** copy or symlink `skills/*` into `~/.hermes/skills/` (or open this repo).
+Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, OpenClaw, Hermes, and anything that scans `.agents/skills/`).
 
-Full matrix: [`install/paths.md`](install/paths.md) · human notes: [`install/README.md`](install/README.md)
-
-### Grok Build
+Commands and host matrix: [`install/README.md`](install/README.md) · [`install/paths.md`](install/paths.md)
 
 ```bash
+# Grok Build
 grok plugin marketplace add tony-sappe/dont-panic
 grok plugin install dont-panic --trust
-```
 
-Local checkout:
-
-```bash
-grok plugin install /path/to/dont-panic --trust
-```
-
-Enable if needed: `/plugins` → Space on `dont-panic`, or in `~/.grok/config.toml`:
-
-```toml
-[plugins]
-enabled = ["dont-panic"]
-```
-
-### Codex
-
-```bash
+# Codex — then install Don't Panic from /plugins
 codex plugin marketplace add tony-sappe/dont-panic
+
+# Agent Skills via GitHub CLI
+gh skill install tony-sappe/dont-panic --all
 ```
 
-Then install **Don't Panic** from `/plugins` (CLI or app). For a local checkout, add this repo as a marketplace source and install `dont-panic`.
+Claude Code: `/plugin marketplace add tony-sappe/dont-panic` then `/plugin install dont-panic@dont-panic`.
 
-### Claude Code
+Local checkout, AGENTS.md snippet, and non-plugin hosts: see [`install/`](install/).
 
-```text
-/plugin marketplace add tony-sappe/dont-panic
-/plugin install dont-panic@dont-panic
-```
+Start a **new session** (or reload) after install so the skills appear.
 
-Or: `claude --plugin-dir /path/to/dont-panic`.
+## Usage
 
-### Cursor / Windsurf / OpenClaw
+After install, say the job in plain language (kebab ids also work: `bound-the-ask`, `pack-light`, …):
 
-Open this checkout (adapters already present), or copy/symlink the matching `.<host>/skills/` tree into your project. Details in [`install/paths.md`](install/paths.md).
+- **bound the ask** — ambiguous or multi-file work before coding
+- **pack light** — design / new parts / YAGNI
+- **prove it** — before calling something done or opening a PR
+- **find the fault** — bugs, regressions, flaky tests
+- **subtract** — delete or simplify without changing behavior
 
-### AGENTS.md map
+Examples:
 
-Merge [`install/AGENTS.snippet.md`](install/AGENTS.snippet.md) into the target project's `AGENTS.md` (prepend preferred).
+> Bound the ask for adding SSO to this app.
+> Pack light for this design.
+> Prove it before you open the PR.
+> Find the fault — checkout fails on Safari only.
+> Subtract the unused auth helpers.
 
 ### Intensity
 
@@ -119,17 +107,19 @@ dont-panic ultra   # hard gates, failure-first, subtract hard
 ```
 
 ## Skills
+Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
 
 | Skill | Job |
 | --- | --- |
 | `dont-panic` | Intensity dial + route map |
 | `bound-the-ask` | Bounded contract before material work |
-| `pack-light` | Pack light — smallest complete system you can trust |
+| `pack-light` | Smallest complete system you can trust |
 | `prove-it` | Named evidence before "done" |
 | `find-the-fault` | Observe → one hypothesis → one experiment |
 | `subtract` | Behavior-preserving simplification |
 
-Artifacts in the target project go under `specs/` (created if missing), or `docs/specs/` when that tree already exists or the user asks for it.
+Artifacts in the target project go under `specs/` (or `docs/specs/` when that tree already exists or the user asks for it).
+
 
 ## Contributing
 
@@ -143,6 +133,8 @@ After editing skill bodies or OpenClaw blurbs:
 ./scripts/build-openclaw-skills.sh
 ```
 
-## Thanks
-Noteworthy projects inspiring this project:
-<a href="https://ponytail.dev">[ponytail]</a> &middot; <a href="https://github.com/obra/superpowers">[superpowers]</a> &middot; <a href="https://github.com/bmad-code-org/BMAD-METHOD">[BMAD Method]</a> &middot; <a href="https://github.com/sudoconnor/first-principles-engineering">[first-principles-engineering]</a>
+## ...and Thanks for All the Fish!
+
+<a href="https://ponytail.dev">[ponytail]</a> · <a href="https://github.com/obra/superpowers">[superpowers]</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD">[BMAD Method]</a> · <a href="https://github.com/sudoconnor/first-principles-engineering">[first-principles-engineering]</a>
+
+([MIT](LICENSE))
