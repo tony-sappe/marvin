@@ -21,4 +21,4 @@ A new dependency, service, queue, cache, table, worker, cron, retry path, config
 
 ## Option generation (material architecture only)
 
-When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities, keep 3–5 survivors, then pick the smallest trusted survivor. Do not score before the space exists. Skip this for ordinary CRUD.
+When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities, keep 3–5 survivors, then pick the smallest survivor that still holds. Do not score before the space exists. Skip this for ordinary CRUD.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "dont-panic",
+  "description": "Don't Panic — smallest trusted slice skills for coding agents.",
+  "owner": {
+    "name": "Tony Sappe",
+    "url": "https://github.com/tony-sappe"
+  },
+  "plugins": [
+    {
+      "name": "dont-panic",
+      "description": "Bound the ask, pack the smallest trusted system, prove done, find faults, subtract safely.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

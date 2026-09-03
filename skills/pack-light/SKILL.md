@@ -1,13 +1,13 @@
 ---
-name: smallest-trusted
-description: Choose and build the smallest complete system that can be trusted. Use for design shape, implementation, new dependencies, new services, new stores, new APIs, queues, caches, vibe coding, or when the user says smallest trusted, YAGNI, first principles, simplest thing, pack light, or is this too much. Do not use for behavior-preserving cleanup of existing code — use subtract for that.
+name: pack-light
+description: Choose and build the smallest complete system that can be trusted. Use for design shape, implementation, new dependencies, new services, new stores, new APIs, queues, caches, vibe coding, or when the user says pack light, YAGNI, first principles, simplest thing, or is this too much. Do not use for behavior-preserving cleanup of existing code — use subtract for that.
 license: MIT
 metadata:
   collection: dont-panic
   version: "1.0"
 ---
 
-> Stop at the first design that can be trusted.
+> Pack light. Stop at the first design that can be trusted.
 
 ## When it runs
 

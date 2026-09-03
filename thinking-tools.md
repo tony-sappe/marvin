@@ -4,7 +4,7 @@ Nine frameworks for framing problems, choosing designs, debugging, and deciding 
 
 ## Where they show up in Don't Panic
 
-| Tool | Bound the ask | Smallest trusted | Prove it | Find the fault | Subtract |
+| Tool | Bound the ask | Pack light | Prove it | Find the fault | Subtract |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Issue trees](#issue-trees) | x | | x | x | |
 | [Inversion](#inversion) | x | | x | x | |

@@ -1,11 +1,13 @@
 ---
 name: subtract
-description: Reduce an existing system while preserving behavior. Use when asked to refactor, simplify, delete dead code, collapse an abstraction, drop a dependency, clean a repo, cut tech debt, or when the user says subtract, simplify, or raptor. Do not use for greenfield design unless existing code is the thing being simplified.
+description: "Reduce an existing system while preserving behavior. Use for refactor, delete dead code, drop deps, tech debt. Not for greenfield design."
+homepage: https://github.com/tony-sappe/dont-panic
 license: MIT
 metadata:
   collection: dont-panic
   version: "1.0"
 ---
+
 
 > Same behavior. Fewer parts.
 

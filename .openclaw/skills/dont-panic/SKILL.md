@@ -1,11 +1,13 @@
 ---
 name: dont-panic
-description: Set Don't Panic intensity and remind the skill map. Use when the user says dont-panic, Don't Panic, lite, full, ultra, or asks how to use this collection. Do not use as a substitute for bound-the-ask, pack-light, prove-it, find-the-fault, or subtract on the actual work.
+description: "Set Don't Panic intensity (lite/full/ultra) and show the skill map. Use for dont-panic or how to use this collection. Not a job-skill substitute."
+homepage: https://github.com/tony-sappe/dont-panic
 license: MIT
 metadata:
   collection: dont-panic
   version: "1.0"
 ---
+
 
 > Pack the towel. Set the dial. Then do the job.
 

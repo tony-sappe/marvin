@@ -9,7 +9,7 @@ Intensity (session): **full** unless the user set otherwise via `dont-panic`.
 
 Route — load one skill, not all of them:
 - Ambiguous or material work — `bound-the-ask`. Write or confirm the contract before design when the ask is unclear. Vibe coding may skip a written contract when the outcome is obvious.
-- Design or new parts (dependency, service, store, API, queue, cache) — `smallest-trusted`. Walk the ladder. Stop at the first rung that holds.
+- Design or new parts (dependency, service, store, API, queue, cache) — `pack-light`. Walk the ladder. Stop at the first rung that holds.
 - Claiming done, opening a PR, verifying a fix — `prove-it`. Name the evidence type. No type stands in for another.
 - Bugs, incidents, "why is this broken" — `find-the-fault`. Observe, one hypothesis, one experiment.
 - Cleanup, refactor, dead code, fewer parts — `subtract`. Inspection first unless the user already named a surgical cut.
