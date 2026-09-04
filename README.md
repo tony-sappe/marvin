@@ -92,11 +92,13 @@ After install, say the job in plain language (kebab ids also work: `bound-the-as
 
 Examples:
 
-> Bound the ask for adding SSO to this app.
-> Pack light for this design.
-> Prove it before you open the PR.
-> Find the fault — checkout fails on Safari only.
-> Subtract the unused auth helpers.
+```text
+Bound the ask for adding SSO to this app.
+Pack light for this design.
+Prove it before you open the PR.
+Find the fault — checkout fails on Safari only.
+Subtract the unused auth helpers.
+```
 
 ### Intensity
 
