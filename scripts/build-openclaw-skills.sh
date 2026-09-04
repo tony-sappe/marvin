@@ -51,7 +51,7 @@ render() {
   printf '%s\n' "license: MIT"
   printf '%s\n' "metadata:"
   printf '%s\n' "  collection: marvin"
-  printf '%s\n' "  version: \"1.0\""
+  printf '%s\n' "  version: \"1.1.1\""
   printf '%s\n' "---"
   printf '\n'
   body_of "$name"

@@ -4,7 +4,7 @@ description: Choose and build the smallest complete system that can be trusted. 
 license: MIT
 metadata:
   collection: marvin
-  version: "1.0"
+  version: "1.1.1"
 ---
 
 > Pack light. Stop at the first design that can be trusted.

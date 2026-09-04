@@ -4,7 +4,7 @@ description: Set Marvin intensity and remind the skill map. Use when the user sa
 license: MIT
 metadata:
   collection: marvin
-  version: "1.0"
+  version: "1.1.1"
 ---
 
 > Pack the towel. Set the dial. Then do the job.

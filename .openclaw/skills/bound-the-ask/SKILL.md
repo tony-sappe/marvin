@@ -5,7 +5,7 @@ homepage: https://github.com/tony-sappe/marvin
 license: MIT
 metadata:
   collection: marvin
-  version: "1.0"
+  version: "1.1.1"
 ---
 
 

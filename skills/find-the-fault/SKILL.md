@@ -4,7 +4,7 @@ description: Debug with observation, one hypothesis, and one experiment at a tim
 license: MIT
 metadata:
   collection: marvin
-  version: "1.0"
+  version: "1.1.1"
 ---
 
 > One hypothesis. One experiment. Then look again.

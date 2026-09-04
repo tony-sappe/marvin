@@ -4,7 +4,7 @@ description: Turn a request into a bounded contract before material design or co
 license: MIT
 metadata:
   collection: marvin
-  version: "1.0"
+  version: "1.1.1"
 ---
 
 > Name the outcome before you shape the system.
