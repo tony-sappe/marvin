@@ -39,15 +39,17 @@ For material stack or design choices:
 1. List constraints that remain if the current design vanishes (physics, law, existing data contracts, SLO, threat model). Strike "how we did it last time."
 2. Write keepers as contracts: precondition / postcondition / invariant. One check in one place.
 3. Name the in-repo or platform primitive that already satisfies each invariant. Reuse is the default.
-4. Rebuild. Analogies ("like Netflix") wait until this exists.
+4. Rebuild against the named primitive. Analogies ("like Netflix") wait until this exists.
 
 ## Safety floor
 
-Never trade these away to look small. Load `../../references/safety-floor.md` when touching auth, data, money, or anything concurrent.
+Never trade these away to look small, even to look small: auth, data, money, and anything concurrent. Keep their checks, guarantees, and rollback paths intact.
 
 ## Delivery
 
 When implementation is requested: one narrow end-to-end slice that meets the cheapest proof. Available capacity does not enlarge scope. If a new unplanned part appears, stop and reslice.
+
+After any destructive step — a reslice, a new part, or a dropped rung — re-run the cheapest proof before proceeding. If it fails, fix and retry in place; do not move on to the next step with an unproven slice.
 
 ## Communication
 

@@ -41,10 +41,19 @@ Default: inspection if the user has not named a cut. Surgical if they pointed at
 3. Preserve behavior first — run or name the safety net before editing.
 4. Delete before adding.
 5. Collapse before abstracting. Inline single-use wrappers. Replace interface + one implementation with the implementation.
+
+   ```ts
+   // before
+   interface Store { get(k: string): T }
+   class MemStore implements Store { get(k) { return this.map[k] } }
+   const store: Store = new MemStore();
+   // after
+   const get = (k: string): T => store.map[k];
+   ```
 6. Move invariants closer to the source (types, schema, DB constraints, framework validation).
 7. Simplify state — derive, don't duplicate. One source of truth.
 8. Dependency diet — stdlib / platform / already installed. Classify keep / replace-with-platform / inline / remove / defer. Search imports, dynamic loads, config, build, tests, generated code before "unused."
-9. Prove the change — focused tests, typecheck, build, or a specific manual path. Prefer `prove-it` for the gate.
+9. Prove the change — focused tests, typecheck, build, or a specific manual path. Prefer `prove-it` for the gate. If proof fails, fix and re-run; do not advance until it passes.
 10. Stop. Leftover opportunities become notes, not drive-by edits.
 
 ## Smells
@@ -53,7 +62,7 @@ See `references/smells.md`. Name the category in the answer; load the list when 
 
 ## Safety
 
-Same floor as `pack-light`. Load `../../references/safety-floor.md` when relevant.
+Same floor as `pack-light`: behavior-preserving edits only, unless the user explicitly changes behavior. Run or name the safety net before editing.
 
 ## Communication
 

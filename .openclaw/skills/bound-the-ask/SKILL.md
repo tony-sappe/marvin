@@ -1,6 +1,6 @@
 ---
 name: bound-the-ask
-description: "Turn a request into a bounded contract before material work. Use for ambiguous asks, specs, briefs, multi-file or long work. Not for typos or known-bug fixes."
+description: "Turn a request into a bounded contract before material work: split compound asks, name the outcome and actor, and flag irreversible choices early. Use for ambiguous asks, fuzzy requirements, open-ended tasks, specs, briefs, feature requests, multi-file or long work. Not for typos or known-bug fixes."
 homepage: https://github.com/tony-sappe/marvin
 license: MIT
 metadata:
@@ -40,6 +40,7 @@ metadata:
 9. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under shrug vibe-coding when the outcome is obvious and the user asked to build now.
 10. If the user rejects a boundary, invalidate every downstream decision that depended on it.
 11. Structure the answer so a reader can stop after the governing outcome sentence and still know the point.
+12. Verify the contract before handing off: every required section is filled, acceptance criteria are testable, scope and irreversible choices are internally consistent, and the stop condition is concrete. If any are missing or contradict each other, fix them now — do not hand off a partial contract.
 
 ## Artifact path
 
@@ -51,6 +52,24 @@ In the **target** project (not this skill repo):
 4. If the user asks for `docs/specs/`, create that instead
 
 Template: `references/contract-template.md`. Keep sections short. Bullets, not prose.
+
+## Worked example
+
+> Contract — export-csv
+
+- **Outcome:** Operators download a filtered, paginated CSV of orders from the admin UI.
+- **Actor:** Logged-in operator with `orders:read`.
+- **Acceptance:**
+  - MUST: streamed export so 100k rows do not OOM the worker
+  - SHOULD: respect active filter + date range
+  - MAY: column selection
+- **Scope:**
+  - In: streaming endpoint, `Content-Disposition: attachment`, UTF-8 BOM
+  - Out: scheduling, email delivery, non-CSV formats
+- **Irreversible:** none — read-only, no schema or API change
+- **Owner:** platform team
+- **Stop condition:** operator downloads a CSV matching the filter without a worker restart.
+- **Cheapest proof:** curl the endpoint with a 100k-row seed and confirm row count + first/last row.
 
 ## Communication
 

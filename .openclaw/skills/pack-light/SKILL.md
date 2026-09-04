@@ -1,6 +1,6 @@
 ---
 name: pack-light
-description: "Pack light. Build the smallest complete system you can trust. Use for design, new parts, YAGNI, vibe coding. Not for cleanup — use subtract."
+description: "Pack light. Shrink scope, drop speculative parts, reuse platform primitives. Use for design, new parts, YAGNI, vibe coding, over-engineering. Not for cleanup — use subtract."
 homepage: https://github.com/tony-sappe/marvin
 license: MIT
 metadata:
@@ -45,7 +45,7 @@ For material stack or design choices:
 
 ## Safety floor
 
-Never trade these away to look small. Load `../../references/safety-floor.md` when touching auth, data, money, or anything concurrent.
+Never trade these away to look small. When touching auth, data, money, or anything concurrent, keep the floor: correctness, security, and operability stay. Do not drop a stated MUST, a required invariant, or a needed concurrency guard to shrink scope.
 
 ## Delivery
 

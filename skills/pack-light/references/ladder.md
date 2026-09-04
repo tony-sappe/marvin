@@ -7,6 +7,19 @@
 5. **Collapse or derive.** Merge duplicate flows. Derive state when the authority is available and derivation is cheap and stable. Do not store what you can compute.
 6. **Add a part that pays rent.** Current need, why rungs 1–5 lose, owner, failure mode, removal trigger. Reject flexibility justified only by a hypothetical future.
 
+## Worked example — one webhook
+
+Need: "Add a webhook so billing pings us on payout." Climb the rungs:
+
+1. **Drop it.** Stated MUST from the contract — cannot drop without confirmation.
+2. **Reframe.** Polling the billing API on a cron would meet the outcome, but adds a worker and a cron surface. Net larger.
+3. **Platform.** The cloud provider has a native webhook receiver with retries, signature verification, and an HTTPS endpoint. Use it instead of a new service.
+4. **This repo.** Route the receiver to the smallest proven seam that already owns billing state. Keep that seam as the source of truth.
+5. **Collapse or derive.** Payout status is derivable from the existing ledger authority — do not store a second copy.
+6. **Add a part that pays rent.** Not reached: rung 3 held.
+
+Result: one platform endpoint plus one function on the existing seam. No new service, no queue, no new table.
+
 ## Unit of account
 
 Lifecycle surface area, not lines:

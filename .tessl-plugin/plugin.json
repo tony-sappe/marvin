@@ -1,0 +1,10 @@
+{
+  "name": "sappe/marvin",
+  "version": "1.0.0",
+  "description": "Smallest trusted slice for coding agents. Bound the ask, pack light, prove it, find the fault, then subtract.",
+  "private": true,
+  "skills": "./skills/",
+  "license": "MIT",
+  "homepage": "https://github.com/tony-sappe/marvin",
+  "repository": "https://github.com/tony-sappe/marvin"
+}
