@@ -21,4 +21,19 @@ A new dependency, service, queue, cache, table, worker, cron, retry path, config
 
 ## Option generation (material architecture only)
 
-When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities, keep 3–5 survivors, then pick the smallest survivor that still holds. Do not score before the space exists. Skip this for ordinary CRUD.
+When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities (CCA), keep 3–5 survivors, name the rejects, then pick the smallest survivor that still holds. Do not score before the space exists. Under **big-brain**, leave a short note of axes + survivors + chosen path. Skip this for ordinary CRUD.
+
+## Feedback loops (dynamic designs)
+
+When retries, caches, autoscaling, queues, or capacity will fight the design:
+
+1. Name the **stock** and the **flows** that fill/drain it.
+2. Name polarity (**R** reinforcing / **B** balancing) and significant **delays**.
+3. Name the **opposing** loop.
+4. State the intervention: which link to add/break, delay to shorten, or goal to make explicit.
+
+Skip when the change is static CRUD with no dynamic pressure.
+
+## Leverage rank (claimed high-leverage changes)
+
+When a change is sold as architecture or high leverage, classify it (Meadows weak→strong): parameter/constant (#12) → buffers → stock/flow structure → delays → feedback strength → information flows → rules → goals. Prefer structural moves (≈ delays through rules, or a genuine goal change) over constants. State why a weaker rank fails. Write the concrete change that matches the claimed rank — not "paradigm" as an excuse to dodge a concrete edit.
