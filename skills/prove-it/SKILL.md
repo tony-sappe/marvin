@@ -35,11 +35,12 @@ No type stands in for another. A green unit test is not a runtime proof. A scree
    - High blast (data, auth, money, production path) → include integrated and/or a smoke / e2e slice even when you "feel sure."
    - Isolated pure logic with strong unit evidence → do not invent a new browser suite.
    - Kind of work: experiment (optimize for learning) / feature / platform (quality bar high).
-4. New behavior — prefer red-green: failing check that names the behavior, watch it fail, minimum code, watch it pass.
-5. Existing behavior you do not fully trust — characterization check before changing it.
-6. Never automatically delete working code just because it was written before a test.
-7. If a high-level test fails: replicate as a unit/functional check first, then fix.
-8. Report residual gaps by evidence type. Never promote a plausible hypothesis to "done."
+4. Optional on material PRs: a one-line test-matrix row — `unit: …; functional: …; smoke: …; e2e: at most N journeys: …`. Name concrete cases, not "more coverage." Optional RAT: riskiest assumption → cheapest test that kills it.
+5. New behavior — prefer red-green: failing check that names the behavior, watch it fail, minimum code, watch it pass.
+6. Existing behavior you do not fully trust — characterization check before changing it.
+7. Never automatically delete working code just because it was written before a test.
+8. If a high-level test fails: replicate as a unit/functional check first, then fix. Do not duplicate lower-layer asserts at e2e.
+9. Report residual gaps by evidence type. Never promote a plausible hypothesis to "done."
 
 For active debugging (unknown cause), load `find-the-fault` first; use this skill to gate the fix claim.
 

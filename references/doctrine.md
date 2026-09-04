@@ -18,3 +18,5 @@ Short pointers. Not quotes. Not essays.
 - Meyer Design by Contract — preconditions, postconditions, invariants (one check, one place)
 - Zeller scientific debugging — hypothesis, prediction, one experiment, logbook
 - Google Testing Blog / SWE Book — blast radius and small/medium/large tests; Beyoncé rule
+- Mehrotra/Hudson eigenquestions — decide the discriminating question first; cascade principles
+- Meadows / Kim — stock–flow, feedback polarity, leverage ranks (structural over parameter tweaks)

@@ -41,7 +41,12 @@ For material stack or design choices:
 1. List constraints that remain if the current design vanishes (physics, law, existing data contracts, SLO, threat model). Strike "how we did it last time."
 2. Write keepers as contracts: precondition / postcondition / invariant. One check in one place.
 3. Name the in-repo or platform primitive that already satisfies each invariant. Reuse is the default.
-4. Rebuild. Analogies ("like Netflix") wait until this exists.
+4. **Delete before add.** List what can be deleted, demoted, or reused. If net lifecycle surface area grows, write `Removed / not built` (or "nothing to delete because…").
+5. Rebuild only the gap. Analogies ("like Netflix") wait until this exists.
+
+## Dynamics and leverage
+
+When the design is under dynamic pressure (retries, caches, autoscaling, queues) or a change is claimed as high-leverage, use the short checks in `references/ladder.md` (feedback loops + leverage rank). Primers: `../../thinking-tools.md#feedback-loops`, `../../thinking-tools.md#leverage-points`.
 
 ## Safety floor
 
@@ -62,3 +67,4 @@ Lead with the chosen rung and the rejected alternatives, one line each. Then the
 - "We'll need this when we scale"
 - Replacing a boring seam with a clever one
 - NIH when a platform primitive fits
+- Calling a parameter tweak "architecture"

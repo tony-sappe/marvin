@@ -1,20 +1,23 @@
 # Thinking tools
 
-Nine frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. Icons from [Untools](https://untools.co).
+Twelve frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. These are the textbook; Marvin’s job skills (`bound-the-ask`, `pack-light`, `prove-it`, `find-the-fault`, `subtract`) are the recipes that invoke them. Do not mint a new top-level skill for each tool. Icons from [Untools](https://untools.co) where available.
 
 ## Where they show up in Marvin
 
 | Tool | Bound the ask | Pack light | Prove it | Find the fault | Subtract |
 | --- | :---: | :---: | :---: | :---: | :---: |
+| [Cynefin](#cynefin) | x | x | | x | |
+| [Eigenquestions](#eigenquestions) | x | | | | |
 | [Issue trees](#issue-trees) | x | | x | x | |
 | [Inversion](#inversion) | x | | x | x | |
 | [Abstraction laddering](#abstraction-laddering) | x | x | | | |
 | [First principles](#first-principles) | x | x | | | x |
-| [Cynefin](#cynefin) | x | x | | x | |
-| [OODA](#ooda) | | | | x | |
 | [Zwicky box](#zwicky-box) | | x | | | |
+| [OODA](#ooda) | | | | x | |
 | [Minto Pyramid](#minto-pyramid) | x | | | | |
 | [Test bar](#test-bar) | | x | x | | |
+| [Feedback loops](#feedback-loops) | | x | | x | |
+| [Leverage points](#leverage-points) | | x | | | |
 
 ---
 
@@ -148,9 +151,9 @@ flowchart TB
 
 <img src="https://assets-us-01.kc-usercontent.com/c6e42f10-0ed4-0062-585c-b740aa1ad46c/5d68eb68-8109-4829-918b-0391e9b03656/first-principles-icon.png" alt="First principles icon" width="72" />
 
-Separate what is true in this situation from analogy (“this is how people do it”). A first principle here is an **irreducible constraint**: it still holds if the current design is deleted. Then rebuild.
+Separate what is true in this situation from analogy (“this is how people do it”). A first principle here is an **irreducible constraint**: it still holds if the current design is deleted. Write keepers as Meyer contracts, map reuse, invent only the gap, then **delete before add**. Craftsmanship is less surface area and sharper contracts — not Musk anecdotes or Five Whys chains.
 
-Prefer writing constraints as contracts (Meyer) over ritual “Five Whys.” After you have irreducibles, default to reusing primitives that already satisfy them.
+Prefer writing constraints as contracts (Meyer) over ritual “Five Whys.” After you have irreducibles, default to reusing primitives that already satisfy them. Addition-by-subtraction / Occam lives here, not as a separate tool; behavior-preserving cleanup of existing code still routes to `subtract`.
 
 ### How to rebuild from constraints
 
@@ -162,8 +165,9 @@ Prefer writing constraints as contracts (Meyer) over ritual “Five Whys.” Aft
    - **invariant** — always true in observable states  
    One check lives in one place — not both caller and supplier.
 4. For each invariant, name the existing primitive or library that already satisfies it. Reuse is the default.
-5. Rebuild. Analogies (“like Netflix”) wait until steps 2–4 exist.
-6. Failures to avoid: “users want speed” as an axiom; inventing what already exists (NIH).
+5. **Delete before add.** Before inventing or growing lifecycle surface area: list what can be deleted, demoted, or reused. When net surface grows, require a `Removed / not built` note (or explicit “nothing to delete because…”).
+6. Rebuild only the gap. Analogies (“like Netflix”) wait until steps 2–5 exist.
+7. Failures to avoid: “users want speed” as an axiom; inventing what already exists (NIH); deleting tests or observability to “simplify.”
 
 ### Shape
 
@@ -173,7 +177,8 @@ flowchart LR
   Strip --> Ax["Irreducible constraints"]
   Ax --> Contracts["Pre / post / invariant"]
   Contracts --> Reuse["Reuse existing primitives"]
-  Reuse --> Rebuild["Rebuild the smallest design that holds"]
+  Reuse --> Delete["Delete / demote / reuse candidates"]
+  Delete --> Rebuild["Invent gap only + Removed/not built"]
 ```
 
 ### Further reading
@@ -365,9 +370,11 @@ A failing test is not value; a fix is. The ideal feedback loop is fast, reliable
 2. Name evidence already in hand: repro rate, acceptance coverage, contract tests, last similar incident.
 3. Name the kind of work: Experiment (optimize for learning) / Feature / Platform (quality bar is high).
 4. Pick the **required** layer(s). High blast always includes functional + a smoke / e2e path even when you “feel sure.” Isolated change with strong unit evidence does not get a new browser suite.
-5. If a high-level test fails: replicate it as a unit / functional test first, then fix.
-6. Beyoncé rule: if you liked it, put a test on it.
-7. Failures to avoid: high confidence skips tests; low confidence skips shipping *and* skips tests. 70/20/10 is a first guess, not a quota.
+5. Forbid duplicating lower-layer asserts at e2e. Thought experiment: you may write only 10 e2e — where?
+6. If a high-level test fails: replicate it as a unit / functional test first, then fix.
+7. Beyoncé rule: if you liked it, put a test on it.
+8. Optional **RAT**: name the riskiest assumption → cheapest test that kills it.
+9. Failures to avoid: confidence-as-logits; high confidence skips tests; low confidence skips shipping *and* skips tests; ice-cream cone of e2e. 70/20/10 is a first guess, not a quota.
 
 ### Shape
 
@@ -389,3 +396,130 @@ flowchart LR
 - Chu, [Product Management Mental Models](https://blackboxofpm.substack.com/p/product-management-mental-models-for-everyone-31e7828cb50b) (speed vs quality; Experiment / Feature / Platform)
 - [Test Pyramid — Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)
 - [Confidence determines speed vs. quality — Untools](https://untools.co/confidence-determines-speed-vs-quality/)
+
+---
+
+## Eigenquestions
+
+Among a set of related questions, the **eigenquestion** is the most discriminating one — if answered, it answers or collapses the rest. Surface debates are often the wrong question. Use when stuck on a multi-question deadlock that should spawn a lasting principle — not on every ticket.
+
+### How to use
+
+1. Surface the deadlock; list related questions/choices (do not order by loudness).
+2. Rank by: *if answered, what else falls?* Prefer discriminating over noisy.
+3. Reframe if needed (rotate perspective; change the question).
+4. Decide the eigenquestion first.
+5. Cascade: write 1–3 principles/decisions that kill downstream bikesheds.
+6. Park remaining questions as entailed or explicitly deferred.
+
+**Stop:** one eigenquestion + ≥2 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
+
+### Shape
+
+```mermaid
+flowchart TD
+  A[Stuck multi-question debate] --> B[List related questions]
+  B --> C[Rank: if answered, what falls?]
+  C --> D[Name eigenquestion]
+  D --> E{Need reframe?}
+  E -->|yes| C
+  E -->|no| F[Decide eigenquestion first]
+  F --> G[Cascade 1-3 principles]
+  G --> H[Park or entail the rest]
+```
+
+### Further reading
+
+- Mehrotra & Hudson, [Eigenquestions: The Art of Framing Problems](https://docs.superhuman.com/@shishir/eigenquestions-the-art-of-framing-problems) (Superhuman handbook)
+- Jenny Wen, [Figma Community: Eigenquestions](https://www.figma.com/community/file/1322597016029468610/eigenquestions)
+---
+
+## Feedback loops
+
+Name the stock, flow, polarity (reinforcing **R** / balancing **B**), delay, and opposing loop that will fight the design — retries, caches, autoscaling, incident spirals, capacity. Optionally label one Kim archetype when it fits. One primer, not ten systems files. Intervention must name which link, delay, or goal changes.
+
+### How to use
+
+1. Name the **stock** (accumulator) and **flows** that fill/drain it (Meadows bathtub).
+2. Name polarity: **R** (amplifies) or **B** (goal-seeking). Mark significant **delays**.
+3. Name the **opposing** loop (what fights or limits the first).
+4. Optional: match **one** Kim archetype if it fits — Fixes That Fail; Shifting the Burden; Limits to Growth / Limits to Success; Drifting Goals; Escalation; Success to the Successful; Tragedy of the Commons; Growth and Underinvestment.
+5. State the intervention: which link to add/break, delay to shorten, or goal to make explicit.
+
+**Stop:** one loop with opposing force named; intervention names the structural change. No essay.
+
+Failures to avoid: “users tell friends” as a reinforcing loop without a stock; drawing arrows with no stock/delay; minting Connection Circles / Iceberg as separate tools (fold here).
+
+### Shape
+
+```mermaid
+flowchart TD
+  A[Design or repeating incident] --> B[Name stock + flows]
+  B --> C[Polarity R or B + delays]
+  C --> D[Name opposing loop]
+  D --> E{Archetype fits?}
+  E -->|yes| F[Label one Kim archetype]
+  E -->|no| G[Skip label]
+  F --> H[Name intervention: link / delay / goal]
+  G --> H
+```
+
+### Further reading
+
+- Daniel H. Kim, *Systems Thinking Tools: A User’s Reference Guide* (Pegasus Communications, 1994/2000) — CLD, R/B, archetypes
+- Meadows Project, [Systems Thinking Resources](https://donellameadows.org/systems-thinking-resources/) (bathtub / stock–flow); [Bathtubs 101 PDF](https://donellameadows.org/wp-content/userfiles/bathtubs101.pdf)
+
+---
+
+## Leverage points
+
+Meadows’ ranked places to intervene in a system (#12 weakest → #1 strongest). Agents tune parameters (#12) and call it architecture. Ask: are we changing a constant, a feedback, a rule, or a goal? Prefer structural interventions (add/break link, shorten delay, make goal explicit) over constants. Loops describe structure; leverage ranks intervention altitude — keep them separate from [feedback loops](#feedback-loops).
+
+### How to use
+
+1. Classify the intervention against Meadows 12 (weak → strong):
+   - **12** Constants, parameters, numbers
+   - **11** Buffer sizes relative to flows
+   - **10** Structure of material stocks and flows
+   - **9** Lengths of delays relative to rate of change
+   - **8** Strength of negative (balancing) feedback
+   - **7** Gain around driving positive (reinforcing) feedback
+   - **6** Structure of information flows (who sees what)
+   - **5** Rules (incentives, constraints, permissions)
+   - **4** Power to add/change/evolve/self-organize structure
+   - **3** Goals of the system
+   - **2** Mindset / paradigm
+   - **1** Power to transcend paradigms
+2. State why weaker ranks fail for this problem.
+3. Prefer structural moves (≈ ranks 9–5, or goal #3 when genuine) over constants.
+4. Write the concrete change that matches the claimed rank.
+
+**Stop:** intervention matches the rank claimed; not “paradigm” as excuse to avoid a concrete change.
+
+### Shape
+
+```mermaid
+flowchart TD
+  A[Proposed change] --> B[Classify Meadows rank]
+  B --> C{Rank structural or justified?}
+  C -->|no: param only| D[Justify or escalate rank]
+  D --> B
+  C -->|yes| E[Why weaker ranks fail]
+  E --> F[Concrete change matching rank]
+```
+
+### Further reading
+
+- Meadows, [Leverage Points: Places to Intervene in a System](https://donellameadows.org/archives/leverage-points-places-to-intervene-in-a-system/)
+- Kim, *Systems Thinking Tools* (Pegasus) — prefer structural interventions; pairs with ranks above
+
+---
+
+## When to reach for which
+
+- Unknown domain / wrong next move → **Cynefin** first.
+- Stuck on which question → **Eigenquestions**; stuck splitting a given problem → **Issue trees**.
+- Spec layer wrong → **Abstraction laddering**; claim buried → **Minto Pyramid**.
+- Architecture options → **Zwicky box**; where to intervene → **Leverage points**; dynamics fighting you → **Feedback loops**.
+- Before inventing code → **First principles** (contracts + reuse + delete).
+- Failure modes before ship → **Inversion**; live bug → **OODA**; what tests to write → **Test bar**.

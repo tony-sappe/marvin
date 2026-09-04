@@ -29,24 +29,35 @@
 </p>
 
 <p align="center">
+  <sub>Quick router</sub><br>
+  <a href="skill-guide.md">[Which skill for this task?]</a>
+</p>
+
+<p align="center">
   <sub>Thinking guide</sub><br>
-  <a href="thinking-tools.md#issue-trees">[Issue trees]</a>
+  <a href="thinking-tools.md#cynefin">[Cynefin]</a>
   &middot;
-  <a href="thinking-tools.md#inversion">[Inversion]</a>
-  &middot;
-  <a href="thinking-tools.md#abstraction-laddering">[Abstraction laddering]</a>
+  <a href="thinking-tools.md#eigenquestions">[Eigenquestions]</a>
   &middot;
   <a href="thinking-tools.md#first-principles">[First principles]</a>
   &middot;
-  <a href="thinking-tools.md#cynefin">[Cynefin]</a>
+  <a href="thinking-tools.md#abstraction-laddering">[Abstraction laddering]</a>
   <br>
-  <a href="thinking-tools.md#ooda">[OODA]</a>
+  <a href="thinking-tools.md#inversion">[Inversion]</a>
   &middot;
   <a href="thinking-tools.md#zwicky-box">[Zwicky box]</a>
   &middot;
   <a href="thinking-tools.md#minto-pyramid">[Minto Pyramid]</a>
   &middot;
   <a href="thinking-tools.md#test-bar">[Test bar]</a>
+  <br>
+  <a href="thinking-tools.md#ooda">[OODA]</a>
+  &middot;
+  <a href="thinking-tools.md#feedback-loops">[Feedback loops]</a>
+  &middot;
+  <a href="thinking-tools.md#leverage-points">[Leverage points]</a>
+  &middot;
+  <a href="thinking-tools.md#issue-trees">[Issue trees]</a>
 </p>
 
 ---
