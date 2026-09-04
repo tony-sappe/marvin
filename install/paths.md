@@ -8,7 +8,7 @@ Identical skill bytes. No per-host forks inside `SKILL.md`.
 
 | Host | How to install | Discovery / adapter | Map |
 | --- | --- | --- | --- |
-| **Grok Build** | `grok plugin marketplace add tony-sappe/marvin` then `grok plugin install marvin --trust` — or `grok plugin install <path-or-url> --trust` | `.grok-plugin/marketplace.json` + root `plugin.json` → `skills/` | Merge `install/AGENTS.snippet.md` into the target project's `AGENTS.md` |
+| **Grok Build** | `grok plugin marketplace add tony-sappe/marvin` then `grok plugin install marvin --trust` — or `grok plugin install tony-sappe/marvin --trust` | `.grok-plugin/marketplace.json` (plugin `source` is the git URL) + root `plugin.json` → `skills/` | Merge `install/AGENTS.snippet.md` into the target project's `AGENTS.md` |
 | **Codex** | `codex plugin marketplace add tony-sappe/marvin` then install `marvin` — or local-path install | `.codex-plugin/plugin.json` + `.agents/plugins/marketplace.json` → `skills/` | Same snippet |
 | **Claude Code** | `/plugin marketplace add tony-sappe/marvin` then `/plugin install marvin@marvin` — or `claude --plugin-dir /path/to/marvin` | `.claude-plugin/plugin.json` (+ `marketplace.json`) → `skills/` | Same snippet |
 | **GitHub CLI** | `gh skill install tony-sappe/marvin --all` (optional `--pin vX.Y.Z`) | Discovers `skills/*/SKILL.md` via [agentskills.io](https://agentskills.io) / `gh skill` | Same snippet |

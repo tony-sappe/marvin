@@ -9,8 +9,12 @@
     {
       "name": "marvin",
       "description": "Bound the ask, pack the smallest trusted system, prove done, find faults, subtract safely.",
-      "source": "./",
-      "category": "productivity"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/tony-sappe/marvin.git"
+      },
+      "category": "productivity",
+      "homepage": "https://github.com/tony-sappe/marvin"
     }
   ]
 }
