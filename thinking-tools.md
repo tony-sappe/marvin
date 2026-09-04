@@ -2,7 +2,7 @@
 
 Nine frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. Icons from [Untools](https://untools.co).
 
-## Where they show up in Don't Panic
+## Where they show up in Marvin
 
 | Tool | Bound the ask | Pack light | Prove it | Find the fault | Subtract |
 | --- | :---: | :---: | :---: | :---: | :---: |

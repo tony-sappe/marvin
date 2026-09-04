@@ -9,11 +9,11 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 OUT_DIR="${1:-.openclaw/skills}"
-HOMEPAGE="https://github.com/tony-sappe/dont-panic"
+HOMEPAGE="https://github.com/tony-sappe/marvin"
 
 # name|short description (<160 chars, one line, no double quotes)
 DESCRIPTIONS=(
-  "dont-panic|Set Don't Panic intensity (lite/full/ultra) and show the skill map. Use for dont-panic or how to use this collection. Not a job-skill substitute."
+  "marvin|Set Marvin intensity (shrug/paranoid/big-brain) and show the skill map. Use for marvin or how to use this collection. Not a job-skill substitute."
   "bound-the-ask|Turn a request into a bounded contract before material work. Use for ambiguous asks, specs, briefs, multi-file or long work. Not for typos or known-bug fixes."
   "pack-light|Pack light. Build the smallest complete system you can trust. Use for design, new parts, YAGNI, vibe coding. Not for cleanup — use subtract."
   "prove-it|Refuse done without named evidence. Use when implementing, fixing, opening a PR, or verifying. Not a design skill; prefer the cheapest decisive proof."
@@ -50,7 +50,7 @@ render() {
   printf '%s\n' "homepage: $HOMEPAGE"
   printf '%s\n' "license: MIT"
   printf '%s\n' "metadata:"
-  printf '%s\n' "  collection: dont-panic"
+  printf '%s\n' "  collection: marvin"
   printf '%s\n' "  version: \"1.0\""
   printf '%s\n' "---"
   printf '\n'

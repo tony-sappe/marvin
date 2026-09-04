@@ -1,13 +1,13 @@
 {
-  "name": "dont-panic",
+  "name": "marvin",
   "version": "1.0.0",
   "description": "Smallest trusted slice for coding agents. Bound the ask, pack light, prove it, find the fault, then subtract.",
   "author": {
     "name": "Tony Sappe",
     "url": "https://github.com/tony-sappe"
   },
-  "homepage": "https://github.com/tony-sappe/dont-panic",
-  "repository": "https://github.com/tony-sappe/dont-panic",
+  "homepage": "https://github.com/tony-sappe/marvin",
+  "repository": "https://github.com/tony-sappe/marvin",
   "license": "MIT",
   "keywords": [
     "yagni",
@@ -19,23 +19,23 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Don't Panic",
+    "displayName": "Marvin",
     "shortDescription": "Bound the ask. Pack light. Prove it. Subtract.",
-    "longDescription": "A portable skill collection for coding agents (Grok Build, Codex, Claude Code, Cursor, and others). Get the question right, choose the smallest trusted system, refuse done without evidence, debug with one experiment at a time, and simplify without changing behavior.",
+    "longDescription": "A portable skill collection for coding agents (Grok Build, Codex, Claude Code, Cursor, and others). Get the question right, choose the smallest trusted system, refuse done without evidence, debug with one experiment at a time, and simplify without changing behavior. Don't Panic.",
     "developerName": "Tony Sappe",
     "category": "Developer Tools",
     "capabilities": [
       "Instructions"
     ],
-    "websiteURL": "https://github.com/tony-sappe/dont-panic",
+    "websiteURL": "https://github.com/tony-sappe/marvin",
     "defaultPrompt": [
-      "Use Don't Panic full for this task.",
+      "Use marvin paranoid for this task.",
       "Bound the ask before we design.",
       "Pack light for this design.",
       "Prove this change before we call it done."
     ],
     "brandColor": "#F5C518",
-    "composerIcon": "./assets/dont-panic-hero.jpg",
-    "logo": "./assets/dont-panic-hero.jpg"
+    "composerIcon": "./assets/marvin-icon.jpg",
+    "logo": "./assets/marvin-icon.jpg"
   }
 }

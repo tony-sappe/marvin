@@ -1,10 +1,10 @@
 ---
 name: subtract
 description: "Reduce an existing system while preserving behavior. Use for refactor, delete dead code, drop deps, tech debt. Not for greenfield design."
-homepage: https://github.com/tony-sappe/dont-panic
+homepage: https://github.com/tony-sappe/marvin
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -21,9 +21,9 @@ If you find a bug while subtracting, do not silently fix it. Call it out. Preser
 
 ## Intensity
 
-- **lite** — inspection or one surgical cut; stop early.
-- **full** — choose a mode; walk the ladder; prove the change.
-- **ultra** — aggressive deletion and collapse still behavior-preserving; ranked delete-list first unless the user already named the cut.
+- **shrug** — inspection or one surgical cut; stop early.
+- **paranoid** — choose a mode; walk the ladder; prove the change.
+- **big-brain** — aggressive deletion and collapse still behavior-preserving; ranked delete-list first unless the user already named the cut.
 
 ## Modes — choose one before editing
 
@@ -32,7 +32,7 @@ If you find a bug while subtracting, do not silently fix it. Call it out. Preser
 3. **Surgical** — one narrow safe cut, then verify.
 4. **Subtract hard** — aggressive deletion and collapse. Still behavior-preserving. Not a rewrite.
 
-Default: inspection if the user has not named a cut. Surgical if they pointed at one thing. Plan if the area is broad. Hard mode only when asked for aggressive simplification or under **ultra** with an explicit go-ahead.
+Default: inspection if the user has not named a cut. Surgical if they pointed at one thing. Plan if the area is broad. Hard mode only when asked for aggressive simplification or under **big-brain** with an explicit go-ahead.
 
 ## Ladder
 

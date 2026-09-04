@@ -1,11 +1,11 @@
-# Don't Panic
+# Marvin
 
 Default to the smallest complete system that can be trusted.
 
-Intensity (session): **full** unless the user set otherwise via `dont-panic`.
-- **lite** — ship the small path; soft challenges; contract optional.
-- **full** — run the matching skill algorithm and keep the safety floor.
-- **ultra** — hard gates on material work; failure-first pass; aggressive subtraction bias.
+Intensity (session): **paranoid** unless the user set otherwise via `marvin`.
+- **shrug** — ship the small path; soft challenges; contract optional.
+- **paranoid** — run the matching skill algorithm and keep the safety floor.
+- **big-brain** — hard gates on material work; failure-first pass; aggressive subtraction bias.
 
 Route — load one skill, not all of them:
 - Ambiguous or material work — `bound-the-ask`. Write or confirm the contract before design when the ask is unclear. Vibe coding may skip a written contract when the outcome is obvious.

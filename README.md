@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="./assets/dont-panic-hero.jpg" width="720" alt="Don't Panic — towel optional, skills required">
+  <img src="./assets/marvin-dont-panic.jpg" width="720" alt="Marvin — He isn't paranoid.">
 </p>
 
-<h1 align="center">Don't Panic!</h1>
+<h1 align="center">Marvin</h1>
 
 <p align="center">
-  <em>Skills required to navigate the improbability of AI! (towel optional)</em>
+  <em>Don't Panic! Marvin is here... unfortunately....</em>
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <a href="skills/dont-panic/SKILL.md">[dont-panic]</a>
+  <a href="skills/marvin/SKILL.md">[marvin]</a>
   &middot;
   <a href="skills/bound-the-ask/SKILL.md">[bound-the-ask]</a>
   &middot;
@@ -64,17 +64,17 @@ Commands and host matrix: [`install/README.md`](install/README.md) · [`install/
 
 ```bash
 # Grok Build
-grok plugin marketplace add tony-sappe/dont-panic
-grok plugin install dont-panic --trust
+grok plugin marketplace add tony-sappe/marvin
+grok plugin install marvin --trust
 
-# Codex — then install Don't Panic from /plugins
-codex plugin marketplace add tony-sappe/dont-panic
+# Codex — then install Marvin from /plugins
+codex plugin marketplace add tony-sappe/marvin
 
 # Agent Skills via GitHub CLI
-gh skill install tony-sappe/dont-panic --all
+gh skill install tony-sappe/marvin --all
 ```
 
-Claude Code: `/plugin marketplace add tony-sappe/dont-panic` then `/plugin install dont-panic@dont-panic`.
+Claude Code: `/plugin marketplace add tony-sappe/marvin` then `/plugin install marvin@marvin`.
 
 Local checkout, AGENTS.md snippet, and non-plugin hosts: see [`install/`](install/).
 
@@ -103,9 +103,9 @@ Subtract the unused auth helpers.
 ### Intensity
 
 ```text
-dont-panic lite    # soft challenges, vibe-coding friendly
-dont-panic full    # default
-dont-panic ultra   # hard gates, failure-first, subtract hard
+marvin shrug       # soft challenges, vibe-coding friendly
+marvin paranoid    # default
+marvin big-brain   # hard gates, failure-first, subtract hard
 ```
 
 ## Skills
@@ -113,7 +113,7 @@ Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
 
 | Skill | Job |
 | --- | --- |
-| `dont-panic` | Intensity dial + route map |
+| `marvin` | Intensity dial + route map |
 | `bound-the-ask` | Bounded contract before material work |
 | `pack-light` | Smallest complete system you can trust |
 | `prove-it` | Named evidence before "done" |
@@ -139,4 +139,4 @@ After editing skill bodies or OpenClaw blurbs:
 
 <a href="https://ponytail.dev">[ponytail]</a> · <a href="https://github.com/obra/superpowers">[superpowers]</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD">[BMAD Method]</a> · <a href="https://github.com/sudoconnor/first-principles-engineering">[first-principles-engineering]</a>
 
-([MIT](LICENSE))
+〔[MIT](LICENSE)〕

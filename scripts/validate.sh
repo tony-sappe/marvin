@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Structural acceptance checks for Don't Panic skills and host adapters.
+# Structural acceptance checks for Marvin skills and host adapters.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 fail=0
-skills=(dont-panic bound-the-ask pack-light prove-it find-the-fault subtract)
+skills=(marvin bound-the-ask pack-light prove-it find-the-fault subtract)
 # Symlink adapters (identical bytes to canonical). OpenClaw is generated separately.
 host_skill_roots=(.agents/skills .cursor/skills .windsurf/skills)
 

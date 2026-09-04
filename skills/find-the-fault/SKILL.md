@@ -3,7 +3,7 @@ name: find-the-fault
 description: Debug with observation, one hypothesis, and one experiment at a time. Use for bugs, incidents, regressions, flaky tests, or when the user says why is this broken, find the fault, root cause, or debug. Do not use for greenfield design or behavior-preserving cleanup.
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -11,9 +11,9 @@ metadata:
 
 ## Intensity
 
-- **lite** — short observe → one experiment; log in chat.
-- **full** — write a debug log for non-trivial faults; ≤3 cycles then escalate.
-- **ultra** — formal log always; after ~10 minutes of guessing go formal; no parallel shotgun patches.
+- **shrug** — short observe → one experiment; log in chat.
+- **paranoid** — write a debug log for non-trivial faults; ≤3 cycles then escalate.
+- **big-brain** — formal log always; after ~10 minutes of guessing go formal; no parallel shotgun patches.
 
 ## Algorithm
 
@@ -31,7 +31,7 @@ metadata:
 
 ## Artifact
 
-Prefer chat table under lite. Otherwise in the target project:
+Prefer chat table under shrug. Otherwise in the target project:
 
 - `specs/debug-<slug>.md` (create `specs/` if needed)
 - or `docs/specs/debug-<slug>.md` if that tree is what the user uses

@@ -1,11 +1,11 @@
 {
-  "name": "dont-panic",
+  "name": "marvin",
   "interface": {
-    "displayName": "Don't Panic"
+    "displayName": "Marvin"
   },
   "plugins": [
     {
-      "name": "dont-panic",
+      "name": "marvin",
       "source": {
         "source": "local",
         "path": "./"

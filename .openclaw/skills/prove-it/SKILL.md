@@ -1,10 +1,10 @@
 ---
 name: prove-it
 description: "Refuse done without named evidence. Use when implementing, fixing, opening a PR, or verifying. Not a design skill; prefer the cheapest decisive proof."
-homepage: https://github.com/tony-sappe/dont-panic
+homepage: https://github.com/tony-sappe/marvin
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -13,9 +13,9 @@ metadata:
 
 ## Intensity
 
-- **lite** — cheapest decisive proof only; say what you did not run.
-- **full** — map each MUST / claim to an evidence type and run the proof.
-- **ultra** — same as full, plus residual gaps table; never promote a hypothesis to done.
+- **shrug** — cheapest decisive proof only; say what you did not run.
+- **paranoid** — map each MUST / claim to an evidence type and run the proof.
+- **big-brain** — same as paranoid, plus residual gaps table; never promote a hypothesis to done.
 
 ## Evidence types
 

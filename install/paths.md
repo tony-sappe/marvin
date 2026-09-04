@@ -8,10 +8,10 @@ Identical skill bytes. No per-host forks inside `SKILL.md`.
 
 | Host | How to install | Discovery / adapter | Map |
 | --- | --- | --- | --- |
-| **Grok Build** | `grok plugin marketplace add tony-sappe/dont-panic` then `grok plugin install dont-panic --trust` — or `grok plugin install <path-or-url> --trust` | `.grok-plugin/marketplace.json` + root `plugin.json` → `skills/` | Merge `install/AGENTS.snippet.md` into the target project's `AGENTS.md` |
-| **Codex** | `codex plugin marketplace add tony-sappe/dont-panic` then install `dont-panic` — or local-path install | `.codex-plugin/plugin.json` + `.agents/plugins/marketplace.json` → `skills/` | Same snippet |
-| **Claude Code** | `/plugin marketplace add tony-sappe/dont-panic` then `/plugin install dont-panic@dont-panic` — or `claude --plugin-dir /path/to/dont-panic` | `.claude-plugin/plugin.json` (+ `marketplace.json`) → `skills/` | Same snippet |
-| **GitHub CLI** | `gh skill install tony-sappe/dont-panic --all` (optional `--pin vX.Y.Z`) | Discovers `skills/*/SKILL.md` via [agentskills.io](https://agentskills.io) / `gh skill` | Same snippet |
+| **Grok Build** | `grok plugin marketplace add tony-sappe/marvin` then `grok plugin install marvin --trust` — or `grok plugin install <path-or-url> --trust` | `.grok-plugin/marketplace.json` + root `plugin.json` → `skills/` | Merge `install/AGENTS.snippet.md` into the target project's `AGENTS.md` |
+| **Codex** | `codex plugin marketplace add tony-sappe/marvin` then install `marvin` — or local-path install | `.codex-plugin/plugin.json` + `.agents/plugins/marketplace.json` → `skills/` | Same snippet |
+| **Claude Code** | `/plugin marketplace add tony-sappe/marvin` then `/plugin install marvin@marvin` — or `claude --plugin-dir /path/to/marvin` | `.claude-plugin/plugin.json` (+ `marketplace.json`) → `skills/` | Same snippet |
+| **GitHub CLI** | `gh skill install tony-sappe/marvin --all` (optional `--pin vX.Y.Z`) | Discovers `skills/*/SKILL.md` via [agentskills.io](https://agentskills.io) / `gh skill` | Same snippet |
 | **Cursor** | Open this repo, or copy/symlink adapters into the target project | `.cursor/skills/<name>` → `skills/<name>` (also discovers `.agents/skills/`) | Same snippet |
 | **Windsurf** | Open this repo, or copy/symlink adapters into the target project | `.windsurf/skills/<name>` → `skills/<name>` (also discovers `.agents/skills/`) | Same snippet |
 | **OpenClaw** | Point the workspace at this repo, or copy `.openclaw/skills/` | `.openclaw/skills/<name>/SKILL.md` generated from `skills/` with short `description` (<160 chars); body identical; local `references/` symlinked | Same snippet |
@@ -44,4 +44,4 @@ That checks canonical skills, required manifests, symlink adapters, and that Ope
 
 - **OpenClaw / ClawHub:** short descriptions are generated only under `.openclaw/skills/`. Canonical `skills/` keep the long routing text for other hosts. After editing a skill body or an OpenClaw blurb, run `./scripts/build-openclaw-skills.sh`.
 - **Windows:** git symlinks need symlink privilege or Developer Mode. If links arrive as plain text files, recreate them or copy `skills/<name>` into each host folder instead.
-- **Always-on rules:** Don't Panic does not ship `.cursor/rules` / `.windsurf/rules` copies. Skills load on demand; use the `AGENTS.md` snippet when you want a short always-on map.
+- **Always-on rules:** Marvin does not ship `.cursor/rules` / `.windsurf/rules` copies. Skills load on demand; use the `AGENTS.md` snippet when you want a short always-on map.

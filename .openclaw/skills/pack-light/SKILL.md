@@ -1,10 +1,10 @@
 ---
 name: pack-light
 description: "Pack light. Build the smallest complete system you can trust. Use for design, new parts, YAGNI, vibe coding. Not for cleanup — use subtract."
-homepage: https://github.com/tony-sappe/dont-panic
+homepage: https://github.com/tony-sappe/marvin
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -13,13 +13,13 @@ metadata:
 
 ## When it runs
 
-After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` — except under **lite** when the outcome is obvious and the user asked to build now.
+After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` — except under **shrug** when the outcome is obvious and the user asked to build now.
 
 ## Intensity
 
-- **lite** — climb fast; one-line note of what you skipped; ship the thin slice.
-- **full** — walk the ladder; name rejected rungs; keep the safety floor.
-- **ultra** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; run option generation when architecture forks.
+- **shrug** — climb fast; one-line note of what you skipped; ship the thin slice.
+- **paranoid** — walk the ladder; name rejected rungs; keep the safety floor.
+- **big-brain** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; run option generation when architecture forks.
 
 ## Ladder
 

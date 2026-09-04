@@ -1,13 +1,13 @@
 {
-  "name": "dont-panic",
+  "name": "marvin",
   "version": "1.0.0",
   "description": "Smallest trusted slice for coding agents. Bound the ask, pack light, prove it, find the fault, then subtract.",
   "author": {
     "name": "Tony Sappe",
     "url": "https://github.com/tony-sappe"
   },
-  "homepage": "https://github.com/tony-sappe/dont-panic",
-  "repository": "https://github.com/tony-sappe/dont-panic",
+  "homepage": "https://github.com/tony-sappe/marvin",
+  "repository": "https://github.com/tony-sappe/marvin",
   "license": "MIT",
   "keywords": [
     "yagni",

@@ -3,7 +3,7 @@ name: bound-the-ask
 description: Turn a request into a bounded contract before material design or code. Use when starting a feature, the ask is ambiguous, an architecture choice is open, the user says spec or brief or bound the ask, the change spans multiple files, or the work would take more than thirty minutes. Do not use for typos, one-line fixes, or a bug that already has a failing reproduction.
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -11,9 +11,9 @@ metadata:
 
 ## Intensity
 
-- **lite** — short contract in chat may suffice; write a file only if the user wants persistence or the ask is still fuzzy.
-- **full** — write the contract artifact when the work is material or ambiguous.
-- **ultra** — always write the artifact for material work; run a failure-first pass; stamp situation kind when blast radius is high and the path is unclear.
+- **shrug** — short contract in chat may suffice; write a file only if the user wants persistence or the ask is still fuzzy.
+- **paranoid** — write the contract artifact when the work is material or ambiguous.
+- **big-brain** — always write the artifact for material work; run a failure-first pass; stamp situation kind when blast radius is high and the path is unclear.
 
 ## Algorithm
 
@@ -35,7 +35,7 @@ metadata:
    - Situation kind: clear | complicated | complex | chaotic | split
    - Forbidden next move (example: "do not invent a new architecture" or "do not freeze a full PRD — spike first")
 8. **Ultra / material:** failure-first pass. Assert the change already failed; list concrete causes; map each survivor to a non-goal, a test, or a mitigation. Put them under Risks.
-9. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under lite vibe-coding when the outcome is obvious and the user asked to build now.
+9. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under shrug vibe-coding when the outcome is obvious and the user asked to build now.
 10. If the user rejects a boundary, invalidate every downstream decision that depended on it.
 11. Structure the answer so a reader can stop after the governing outcome sentence and still know the point.
 

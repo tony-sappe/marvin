@@ -3,7 +3,7 @@ name: pack-light
 description: Choose and build the smallest complete system that can be trusted. Use for design shape, implementation, new dependencies, new services, new stores, new APIs, queues, caches, vibe coding, or when the user says pack light, YAGNI, first principles, simplest thing, or is this too much. Do not use for behavior-preserving cleanup of existing code — use subtract for that.
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -11,13 +11,13 @@ metadata:
 
 ## When it runs
 
-After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` — except under **lite** when the outcome is obvious and the user asked to build now.
+After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` — except under **shrug** when the outcome is obvious and the user asked to build now.
 
 ## Intensity
 
-- **lite** — climb fast; one-line note of what you skipped; ship the thin slice.
-- **full** — walk the ladder; name rejected rungs; keep the safety floor.
-- **ultra** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; run option generation when architecture forks.
+- **shrug** — climb fast; one-line note of what you skipped; ship the thin slice.
+- **paranoid** — walk the ladder; name rejected rungs; keep the safety floor.
+- **big-brain** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; run option generation when architecture forks.
 
 ## Ladder
 

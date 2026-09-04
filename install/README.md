@@ -7,56 +7,56 @@ Usage, intensity, and skill jobs: root [`README.md`](../README.md).
 ## Grok Build
 
 ```bash
-grok plugin marketplace add tony-sappe/dont-panic
-grok plugin install dont-panic --trust
+grok plugin marketplace add tony-sappe/marvin
+grok plugin install marvin --trust
 ```
 
 Or from a local checkout:
 
 ```bash
-grok plugin install /path/to/dont-panic --trust
+grok plugin install /path/to/marvin --trust
 ```
 
-Enable the plugin if it stays off (`/plugins` → Space, or `[plugins] enabled = ["dont-panic"]` in `~/.grok/config.toml`).
+Enable the plugin if it stays off (`/plugins` → Space, or `[plugins] enabled = ["marvin"]` in `~/.grok/config.toml`).
 
 Start a **new session** (or reload) after install so the skills appear.
 
 ## Codex
 
 ```bash
-codex plugin marketplace add tony-sappe/dont-panic
+codex plugin marketplace add tony-sappe/marvin
 ```
 
-Then install **Don't Panic** from `/plugins`, or use your Codex build's local-path install for this checkout.
+Then install **Marvin** from `/plugins`, or use your Codex build's local-path install for this checkout.
 
 New thread/session after install.
 
 ## Claude Code
 
 ```text
-/plugin marketplace add tony-sappe/dont-panic
-/plugin install dont-panic@dont-panic
+/plugin marketplace add tony-sappe/marvin
+/plugin install marvin@marvin
 ```
 
 Local checkout without marketplace:
 
 ```bash
-claude --plugin-dir /path/to/dont-panic
+claude --plugin-dir /path/to/marvin
 ```
 
 ## GitHub CLI (Agent Skills)
 
 ```bash
-gh skill install tony-sappe/dont-panic --all
+gh skill install tony-sappe/marvin --all
 ```
 
-Pin a release with `--pin v1.0.0` when you have published tags. Preview first with `gh skill preview tony-sappe/dont-panic`.
+Pin a release with `--pin v1.0.0` when you have published tags. Preview first with `gh skill preview tony-sappe/marvin`.
 
 ## Cursor / Windsurf
 
 This repo already contains `.cursor/skills/` and `.windsurf/skills/` (symlinks into `skills/`). Opening the checkout is enough for discovery.
 
-To use Don't Panic inside another project, copy or symlink those adapter folders (or `.agents/skills/`) into that project, and merge the AGENTS snippet below.
+To use Marvin inside another project, copy or symlink those adapter folders (or `.agents/skills/`) into that project, and merge the AGENTS snippet below.
 
 ## OpenClaw
 

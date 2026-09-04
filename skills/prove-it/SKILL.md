@@ -3,7 +3,7 @@ name: prove-it
 description: Refuse to call work done without named evidence. Use when implementing, fixing a bug, opening a PR, verifying a change, or when the user says done, prove it, check your work, or verify. Do not use as a design skill and do not run a ceremonial test suite when a cheaper proof exists.
 license: MIT
 metadata:
-  collection: dont-panic
+  collection: marvin
   version: "1.0"
 ---
 
@@ -11,9 +11,9 @@ metadata:
 
 ## Intensity
 
-- **lite** — cheapest decisive proof only; say what you did not run.
-- **full** — map each MUST / claim to an evidence type and run the proof.
-- **ultra** — same as full, plus residual gaps table; never promote a hypothesis to done.
+- **shrug** — cheapest decisive proof only; say what you did not run.
+- **paranoid** — map each MUST / claim to an evidence type and run the proof.
+- **big-brain** — same as paranoid, plus residual gaps table; never promote a hypothesis to done.
 
 ## Evidence types
 
