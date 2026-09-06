@@ -6,6 +6,10 @@
 - MUST
 - SHOULD
 - MAY
+## Examples
+- Normal:
+- Boundary:
+- Failure:
 ## Scope
 - In
 - Out

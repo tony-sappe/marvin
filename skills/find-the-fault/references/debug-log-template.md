@@ -5,6 +5,7 @@
 - Logs / error:
 - Last good:
 - What changed:
+- Minimized repro:
 
 ## Cycles
 

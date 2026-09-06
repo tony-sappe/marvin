@@ -4,7 +4,7 @@ description: Choose and build the smallest complete system that can be trusted. 
 license: MIT
 metadata:
   collection: marvin
-  version: "1.1.1"
+  version: "1.2.0"
 ---
 
 > Pack light. Stop at the first design that can be trusted.
@@ -46,6 +46,10 @@ For material stack or design choices:
 
 When the design is under dynamic pressure (retries, caches, autoscaling, queues) or a change is claimed as high-leverage, use the short checks in `references/ladder.md` (feedback loops + leverage rank). Primers: `../../thinking-tools.md#feedback-loops`, `../../thinking-tools.md#leverage-points`.
 
+When several real designs compete, write **one quality scenario** (stimulus, environment, required response, measure) before picking a survivor. Primer: `../../thinking-tools.md#quality-scenarios`.
+
+When behavior has consequential state (retries, jobs, cancellation, partial writes), list allowed vs forbidden transitions under interruption, repetition, and concurrency. Primer: `../../thinking-tools.md#state-machines`.
+
 ## Safety floor
 
 Never trade these away to look small. Load `../../references/safety-floor.md` when touching auth, data, money, or anything concurrent.
@@ -66,3 +70,5 @@ Lead with the chosen rung and the rejected alternatives, one line each. Then the
 - Replacing a boring seam with a clever one
 - NIH when a platform primitive fits
 - Calling a parameter tweak "architecture"
+- Calling a design "scalable" or "reliable" without a quality scenario
+- Happy-path state only — no interrupted, repeated, or concurrent transition

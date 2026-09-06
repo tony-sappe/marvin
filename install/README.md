@@ -23,13 +23,44 @@ Start a **new session** (or reload) after install so the skills appear.
 
 ## Codex
 
+Two steps: add the **marketplace**, then install the **plugin**. `marvin@marvin` fails if the marketplace was never added.
+
 ```bash
 codex plugin marketplace add tony-sappe/marvin
+codex plugin add marvin@marvin
 ```
 
-Then install **Marvin** from `/plugins`, or use your Codex build's local-path install for this checkout.
+Equivalent marketplace source:
 
-New thread/session after install.
+```bash
+codex plugin marketplace add https://github.com/tony-sappe/marvin.git
+```
+
+**From a local checkout** (no GitHub fetch):
+
+```bash
+codex plugin marketplace add /absolute/path/to/marvin
+codex plugin add marvin@marvin
+```
+
+**Confirm:**
+
+```bash
+codex plugin marketplace list
+codex plugin list --marketplace marvin
+```
+
+Expect `marvin@marvin` → installed, enabled, version `1.2.0`. Codex reads that version from `.codex-plugin/plugin.json`.
+
+**Update later:**
+
+```bash
+codex plugin marketplace upgrade marvin
+```
+
+If the VERSION column stays stale after a release, remove and re-add the plugin (`codex plugin remove marvin` then `codex plugin add marvin@marvin`).
+
+Start a **new thread/session** after install.
 
 ## Claude Code
 
@@ -50,27 +81,13 @@ claude --plugin-dir /path/to/marvin
 gh skill install tony-sappe/marvin --all
 ```
 
-Pin a release with `--pin v1.0.0` when you have published tags. Preview first with `gh skill preview tony-sappe/marvin`.
+Preview first with `gh skill preview tony-sappe/marvin`.
 
 ## Cursor / Windsurf
 
 This repo already contains `.cursor/skills/` and `.windsurf/skills/` (symlinks into `skills/`). Opening the checkout is enough for discovery.
 
 To use Marvin inside another project, copy or symlink those adapter folders (or `.agents/skills/`) into that project, and merge the AGENTS snippet below.
-
-## OpenClaw
-
-`.openclaw/skills/` holds generated copies with short `description` fields (<160 chars) and identical bodies. Regenerate after skill edits:
-
-```bash
-./scripts/build-openclaw-skills.sh
-```
-
-Use this repo as the workspace skills root, or copy that adapter tree into the OpenClaw workdir.
-
-## Hermes Agent
-
-Copy or symlink each folder under `skills/` into `~/.hermes/skills/` (optionally under a category directory). Opening this repo also exposes project-level `skills/`.
 
 ## AGENTS.md
 

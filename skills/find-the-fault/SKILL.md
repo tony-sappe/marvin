@@ -4,7 +4,7 @@ description: Debug with observation, one hypothesis, and one experiment at a tim
 license: MIT
 metadata:
   collection: marvin
-  version: "1.1.1"
+  version: "1.2.0"
 ---
 
 > One hypothesis. One experiment. Then look again.
@@ -19,16 +19,17 @@ metadata:
 
 1. **Observe** — facts only. Repro steps, logs, traces, last-good commit, what changed. No patching yet. Ask what data is being ignored.
 2. If the situation is on fire (data loss, total outage), stabilize first. Label that **mitigation**, not root cause.
-3. When the fault is ambiguous and blast radius is high, stamp situation kind + forbidden next move (example: chaotic → do not write architecture; stabilize).
-4. Invent **one** hypothesis consistent with the observations. You may list ≤5 ranked candidates with discriminators, but run only one experiment.
-5. Make a **prediction** the hypothesis requires.
-6. Run **one** experiment that would kill the hypothesis if false. Collecting more data counts. Not twelve changes in parallel.
-7. Record: hypothesis / prediction / experiment / observation / conclusion.
-8. Match → refine. Miss → replace the hypothesis. Do not silently mutate the hypothesis to fit.
-9. Loop ≤3 cycles, then escalate with what is known and what is blocked.
-10. Split compound faults into separate trees of causes vs separate trees of fixes — do not mix "why" and "how" in one list. Every leaf must be a check you can run (query, probe, failing test) — not a theme.
-11. When the same failure pattern repeats (retries, cache stampede, autoscaling thrash), name stock / flow / polarity / delay / opposing loop and the structural intervention. Primer: `../../thinking-tools.md#feedback-loops`.
-12. When you claim a fix, load `prove-it`. Containment without root cause stays labeled mitigation.
+3. If the failing case or change set is large, **reduce it** while the failure predicate stays true: bisect history, or shrink input/config. Record the minimized reproducer and confirm it still matches the original symptom. Primer: `../../thinking-tools.md#fault-isolation`.
+4. When the fault is ambiguous and blast radius is high, stamp situation kind + forbidden next move (example: chaotic → do not write architecture; stabilize).
+5. Invent **one** hypothesis consistent with the observations. You may list ≤5 ranked candidates with discriminators, but run only one experiment.
+6. Make a **prediction** the hypothesis requires.
+7. Run **one** experiment that would kill the hypothesis if false. Collecting more data counts. Not twelve changes in parallel.
+8. Record: hypothesis / prediction / experiment / observation / conclusion.
+9. Match → refine. Miss → replace the hypothesis. Do not silently mutate the hypothesis to fit.
+10. Loop ≤3 cycles, then escalate with what is known and what is blocked.
+11. Split compound faults into separate trees of causes vs separate trees of fixes — do not mix "why" and "how" in one list. Every leaf must be a check you can run (query, probe, failing test) — not a theme.
+12. When the same failure pattern repeats (retries, cache stampede, autoscaling thrash), name stock / flow / polarity / delay / opposing loop and the structural intervention. Primer: `../../thinking-tools.md#feedback-loops`.
+13. When you claim a fix, load `prove-it`. Containment without root cause stays labeled mitigation.
 
 ## Artifact
 
@@ -49,4 +50,5 @@ Lead with the current cycle row and the next experiment. Not a narrative of ever
 - Panic-patching the first suspicious line
 - Renaming flailing as a process
 - Twelve experiments in parallel
+- Patching the full artifact instead of reducing the reproducer
 - Declaring root cause because the patch "seems to help"

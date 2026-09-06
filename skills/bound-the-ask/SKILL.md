@@ -4,7 +4,7 @@ description: Turn a request into a bounded contract before material design or co
 license: MIT
 metadata:
   collection: marvin
-  version: "1.1.1"
+  version: "1.2.0"
 ---
 
 > Name the outcome before you shape the system.
@@ -24,6 +24,7 @@ metadata:
    - Observable outcome
    - Actor
    - Acceptance criteria (MUST / SHOULD / MAY — RFC 2119)
+   - Representative examples for each important MUST (normal / boundary / failure). Primer: `../../thinking-tools.md#specification-by-example`.
    - In scope / out of scope
    - Irreversible choices (data model, public API, persistence, tenancy)
    - Owner of the resulting behavior
@@ -59,6 +60,7 @@ Lead with the contract (or "contract is sufficient" in one line). Do not narrate
 
 - Interviewing after the contract is closed
 - Inventing requirements "a good system would also have"
+- A MUST with no example that could fail
 - Writing architecture inside the contract
 - Starting implementation "to explore" when the ask is still unbounded
 - Naming thinking frameworks in the user-facing answer
