@@ -1,6 +1,6 @@
 {
   "name": "marvin",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Smallest trusted slice for coding agents. Bound the ask, pack light, prove it, find the fault, then subtract.",
   "author": {
     "name": "Tony Sappe",
@@ -20,7 +20,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Marvin",
-    "shortDescription": "Bound the ask. Pack light. Prove it. Subtract.",
+    "shortDescription": "Bound the ask. Pack light. Prove it. Find the fault. Subtract.",
     "longDescription": "A portable skill collection for coding agents (Grok Build, Codex, Claude Code, Cursor, and others). Get the question right, choose the smallest trusted system, refuse done without evidence, debug with one experiment at a time, and simplify without changing behavior. Don't Panic.",
     "developerName": "Tony Sappe",
     "category": "Developer Tools",
@@ -29,7 +29,6 @@
     ],
     "websiteURL": "https://github.com/tony-sappe/marvin",
     "defaultPrompt": [
-      "Use marvin paranoid for this task.",
       "Bound the ask before we design.",
       "Pack light for this design.",
       "Prove this change before we call it done."

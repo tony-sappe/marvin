@@ -1,10 +1,14 @@
 # Debug log — <slug>
 
+## Situation (if high blast)
+- Kind:
+- Forbidden next move:
 ## Observe
 - Repro:
 - Logs / error:
 - Last good:
 - What changed:
+- Minimized repro:
 
 ## Cycles
 

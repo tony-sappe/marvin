@@ -20,12 +20,11 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 
 | Task | Skill | Notes |
 | --- | --- | --- |
-| Draft SDD / specs / a contract | **bound-the-ask** | Write MUST / SHOULD / MAY, scope, stop, proof |
+| Draft a contract / specs artifact | **bound-the-ask** | Write MUST / SHOULD / MAY, examples, owner, scope, stop, proof |
 | Bound an ambiguous feature ask | **bound-the-ask** | Eigenquestion if several debates block one another |
 | Write acceptance criteria / definition of done | **bound-the-ask** | Then **prove-it** when claiming met |
 | “Should we even build this?” | **bound-the-ask** → **pack-light** | Contract first; ladder may stop at “drop it” |
-| Prioritize / MoSCoW a backlog slice | **bound-the-ask** | One triage line in the contract — not a new skill |
-| ADR / architecture options | **pack-light** | After a contract if the decision is material; use option gen |
+| ADR / architecture options | **pack-light** | After a contract if the decision is material; option gen + one quality scenario |
 | Pick a stack, vendor, or new dependency | **pack-light** | Constraints before analogies; safety floor when relevant |
 | Stuck on the wrong question | **bound-the-ask** | Eigenquestion step |
 | Claim buried in a long memo / PR body | **bound-the-ask** | Governing sentence first (Minto) |
@@ -39,7 +38,7 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | Add an API, service, queue, cache, or store | **pack-light** | New parts must pay rent |
 | “Is this design too much?” | **pack-light** | Stop at first rung that holds |
 | Grow surface area / invent a primitive | **pack-light** | Delete-before-add; `Removed / not built` |
-| Dynamic design (retries, autoscaling, caches) | **pack-light** | Name stock / loop / intervention |
+| Dynamic design (retries, autoscaling, caches) | **pack-light** | Name stock / loop / intervention; state transitions if jobs/retries/cancellation |
 | Claimed “high-leverage” architecture change | **pack-light** | Classify leverage rank; prefer structural over knobs |
 | Greenfield feature with unclear outcome | **bound-the-ask** → **pack-light** | Do not design inside an unbound ask |
 
@@ -48,13 +47,13 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | Task | Skill | Notes |
 | --- | --- | --- |
 | Fix this bug / “why is this broken?” | **find-the-fault** | Observe → one hypothesis → one experiment |
-| Production incident / outage | **find-the-fault** | Stabilize first (mitigation ≠ root cause); Cynefin stamp if chaotic |
-| Regression after a deploy | **find-the-fault** | Last-good commit is Observe data |
+| Production incident / outage | **find-the-fault** | Stabilize first (mitigation ≠ root cause); Cynefin stamp when ambiguous + high blast |
+| Regression after a deploy | **find-the-fault** | Last-good commit is Observe data; bisect / reduce the failing case |
 | Flaky test | **find-the-fault** | Then **prove-it** when claiming fixed |
 | CI failure with unknown cause | **find-the-fault** | If the failure mode is known and you only need proof, **prove-it** |
 | Perf problem (CPU, latency, memory) with unknown cause | **find-the-fault** | e.g. “React app uses too much Chrome memory” → measure first |
 | Repeating incident pattern (retry storm, cache stampede) | **find-the-fault** | Name opposing loop; structural fix may later use **pack-light** |
-| Suspected misconfig / “it works on my machine” | **find-the-fault** | Prefer misconfig before conspiracy |
+| Suspected misconfig / “it works on my machine” | **find-the-fault** | Observe the environment; rank hypotheses from that evidence |
 
 ### Verification and shipping
 
@@ -62,7 +61,7 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | --- | --- | --- |
 | Claim done / check your work | **prove-it** | Name evidence type; cheapest decisive proof |
 | Open a PR / review bar | **prove-it** | Optional test-matrix row on material PRs |
-| What tests should this change get? | **prove-it** | Blast radius × evidence in hand |
+| What tests should this change get? | **prove-it** | Blast radius × evidence in hand; oracle independent of the implementation |
 | Verify a fix after debugging | **prove-it** | After **find-the-fault** closes cause |
 | Red-green for new behavior | **prove-it** | Prefer failing check that names the behavior |
 | Characterization before touching legacy | **prove-it** | Pin behavior, then change (or hand to **subtract**) |
@@ -90,7 +89,7 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | Cut infra cost without changing product behavior | **subtract** | Or **find-the-fault** if “why so expensive?” is unknown |
 | On-call: stop the bleed | **find-the-fault** | Act to stabilize; label mitigation |
 | Post-incident: prevent recurrence | **bound-the-ask** or **pack-light** | Contract the non-goal / change; design the smallest fix |
-| Security-sensitive change (auth, data, money) | **bound-the-ask** → **pack-light** → **prove-it** | Safety floor; high blast always needs stronger proof |
+| Security-sensitive change (auth, data, money) | **bound-the-ask** → **pack-light** → **prove-it** | Safety floor; trust-boundary challenge; high blast always needs stronger proof |
 | Feature flag / gradual rollout decision | **bound-the-ask** | Scope and blast in the contract; implement with **pack-light** |
 
 ---

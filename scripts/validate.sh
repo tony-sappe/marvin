@@ -6,7 +6,7 @@ cd "$ROOT"
 
 fail=0
 skills=(marvin bound-the-ask pack-light prove-it find-the-fault subtract)
-# Symlink adapters (identical bytes to canonical). OpenClaw is generated separately.
+# Symlink adapters (identical bytes to canonical).
 host_skill_roots=(.agents/skills .cursor/skills .windsurf/skills)
 
 echo "== skill folders =="
@@ -38,6 +38,40 @@ for s in "${skills[@]}"; do
     echo "ANGLE BRACKETS IN DESCRIPTION $f"; fail=1
   fi
 done
+
+echo "== versions =="
+want="$(awk -F'"' '/"version"/{print $4; exit}' plugin.json)"
+if [[ -z "$want" ]]; then
+  echo "MISSING version in plugin.json"; fail=1
+  want="MISSING"
+else
+  echo "OK plugin.json version $want"
+fi
+for f in .codex-plugin/plugin.json .claude-plugin/plugin.json; do
+  got="$(awk -F'"' '/"version"/{print $4; exit}' "$f")"
+  if [[ "$got" != "$want" ]]; then
+    echo "VERSION DRIFT $f (got '$got' want '$want')"; fail=1
+  else
+    echo "OK $f version $got"
+  fi
+done
+for s in "${skills[@]}"; do
+  f="skills/$s/SKILL.md"
+  got="$(awk '/^  version:/{gsub(/"/,"",$2); print $2; exit}' "$f")"
+  if [[ "$got" != "$want" ]]; then
+    echo "VERSION DRIFT $f (got '$got' want '$want')"; fail=1
+  else
+    echo "OK $f version $got"
+  fi
+done
+prompts="$(python3 -c 'import json; print(len(json.load(open(".codex-plugin/plugin.json")).get("interface",{}).get("defaultPrompt") or []))' 2>/dev/null || echo "?")"
+if [[ "$prompts" == "?" ]]; then
+  echo "SKIP defaultPrompt count (python3 unavailable)"
+elif (( prompts > 3 )); then
+  echo "TOO MANY defaultPrompt entries ($prompts; Codex keeps at most 3)"; fail=1
+else
+  echo "OK .codex-plugin defaultPrompt count $prompts"
+fi
 
 echo "== AGENTS.md =="
 alines="$(wc -l < AGENTS.md | tr -d ' ')"
@@ -92,42 +126,6 @@ for root in "${host_skill_roots[@]}"; do
     echo "OK $link -> ../../skills/$s"
   done
 done
-
-echo "== openclaw skills =="
-if [[ ! -d .openclaw/skills ]]; then
-  echo "MISSING DIR .openclaw/skills"; fail=1
-else
-  tmp="$(mktemp -d)"
-  trap 'rm -rf "$tmp"' EXIT
-  ./scripts/build-openclaw-skills.sh "$tmp" >/dev/null
-  for s in "${skills[@]}"; do
-    got=".openclaw/skills/$s/SKILL.md"
-    want="$tmp/$s/SKILL.md"
-    if [[ ! -f "$got" ]]; then
-      echo "MISSING $got (run ./scripts/build-openclaw-skills.sh)"; fail=1
-      continue
-    fi
-    if [[ -L ".openclaw/skills/$s" ]]; then
-      echo "UNEXPECTED SYMLINK DIR .openclaw/skills/$s (want generated files)"; fail=1
-      continue
-    fi
-    desc="$(awk -F'"' '/^description:/{print $2; exit}' "$got")"
-    if (( ${#desc} >= 160 )); then
-      echo "OPENCLAW DESC TOO LONG $s (${#desc})"; fail=1
-    fi
-    if ! cmp -s "$got" "$want"; then
-      echo "STALE $got — run: ./scripts/build-openclaw-skills.sh"; fail=1
-      continue
-    fi
-    if [[ -d "skills/$s/references" ]]; then
-      if [[ ! -e ".openclaw/skills/$s/references" ]]; then
-        echo "MISSING .openclaw/skills/$s/references"; fail=1
-        continue
-      fi
-    fi
-    echo "OK .openclaw/skills/$s (${#desc} chars desc)"
-  done
-fi
 
 echo "== hooks ban =="
 if find . -name 'hooks.json' -o -path './hooks/*' 2>/dev/null | grep -q .; then

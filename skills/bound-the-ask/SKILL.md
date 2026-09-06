@@ -4,7 +4,7 @@ description: Turn a request into a bounded contract before material design or co
 license: MIT
 metadata:
   collection: marvin
-  version: "1.1.1"
+  version: "1.2.0"
 ---
 
 > Name the outcome before you shape the system.
@@ -24,6 +24,7 @@ metadata:
    - Observable outcome
    - Actor
    - Acceptance criteria (MUST / SHOULD / MAY — RFC 2119)
+   - Representative examples for each important MUST (normal / boundary / failure). Primer: `../../thinking-tools.md#specification-by-example`.
    - In scope / out of scope
    - Irreversible choices (data model, public API, persistence, tenancy)
    - Owner of the resulting behavior
@@ -35,7 +36,7 @@ metadata:
 8. When the path is ambiguous **and** blast radius is high (auth, data, money, production traffic), add one line at the top of the contract:
    - Situation kind: clear | complicated | complex | chaotic | split
    - Forbidden next move (example: "do not invent a new architecture" or "do not freeze a full PRD — spike first")
-9. **Ultra / material:** failure-first pass. Assert the change already failed; list concrete causes; map each survivor to a non-goal, a test, or a mitigation. Put them under Risks.
+9. **big-brain:** failure-first pass on material work. Assert the change already failed; list concrete causes; map each survivor to a non-goal, a test, or a mitigation. Put them under Risks.
 10. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under shrug vibe-coding when the outcome is obvious and the user asked to build now.
 11. If the user rejects a boundary, invalidate every downstream decision that depended on it.
 12. Lead with one disagreeable governing sentence (a claim, not a topic). A busy reader who stops after it must still know the ask.
@@ -59,6 +60,7 @@ Lead with the contract (or "contract is sufficient" in one line). Do not narrate
 
 - Interviewing after the contract is closed
 - Inventing requirements "a good system would also have"
+- A MUST with no example that could fail
 - Writing architecture inside the contract
 - Starting implementation "to explore" when the ask is still unbounded
 - Naming thinking frameworks in the user-facing answer

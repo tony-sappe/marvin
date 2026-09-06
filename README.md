@@ -58,6 +58,18 @@
   <a href="thinking-tools.md#leverage-points">[Leverage points]</a>
   &middot;
   <a href="thinking-tools.md#issue-trees">[Issue trees]</a>
+  <br>
+  <a href="thinking-tools.md#specification-by-example">[Specification by example]</a>
+  &middot;
+  <a href="thinking-tools.md#quality-scenarios">[Quality scenarios]</a>
+  &middot;
+  <a href="thinking-tools.md#state-machines">[State machines]</a>
+  <br>
+  <a href="thinking-tools.md#independent-oracles">[Independent oracles]</a>
+  &middot;
+  <a href="thinking-tools.md#fault-isolation">[Fault isolation]</a>
+  &middot;
+  <a href="thinking-tools.md#threat-modeling">[Threat modeling]</a>
 </p>
 
 ---
@@ -69,7 +81,7 @@
 
 ## Install
 
-Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, OpenClaw, Hermes, and anything that scans `.agents/skills/`).
+Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, and anything that scans `.agents/skills/`).
 
 Commands and host matrix: [`install/README.md`](install/README.md) · [`install/paths.md`](install/paths.md)
 
@@ -78,8 +90,9 @@ Commands and host matrix: [`install/README.md`](install/README.md) · [`install/
 grok plugin marketplace add tony-sappe/marvin
 grok plugin install marvin --trust
 
-# Codex — then install Marvin from /plugins
+# Codex
 codex plugin marketplace add tony-sappe/marvin
+codex plugin add marvin@marvin
 
 # Agent Skills via GitHub CLI
 gh skill install tony-sappe/marvin --all
@@ -138,12 +151,6 @@ Artifacts in the target project go under `specs/` (or `docs/specs/` when that tr
 
 ```bash
 ./scripts/validate.sh
-```
-
-After editing skill bodies or OpenClaw blurbs:
-
-```bash
-./scripts/build-openclaw-skills.sh
 ```
 
 ## ...and Thanks for All the Fish!

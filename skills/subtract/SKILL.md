@@ -4,7 +4,7 @@ description: Reduce an existing system while preserving behavior. Use when asked
 license: MIT
 metadata:
   collection: marvin
-  version: "1.1.1"
+  version: "1.2.0"
 ---
 
 > Same behavior. Fewer parts.

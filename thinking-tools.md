@@ -1,23 +1,29 @@
 # Thinking tools
 
-Twelve frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. These are the textbook; Marvin’s job skills (`bound-the-ask`, `pack-light`, `prove-it`, `find-the-fault`, `subtract`) are the recipes that invoke them. Do not mint a new top-level skill for each tool. Icons from [Untools](https://untools.co) where available.
+Eighteen frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. These are the textbook; Marvin’s job skills (`bound-the-ask`, `pack-light`, `prove-it`, `find-the-fault`, `subtract`) are the recipes that invoke them. Do not mint a new top-level skill for each tool. Icons from [Untools](https://untools.co) where available.
 
 ## Where they show up in Marvin
 
 | Tool | Bound the ask | Pack light | Prove it | Find the fault | Subtract |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Cynefin](#cynefin) | x | x | | x | |
+| [Cynefin](#cynefin) | x | | | x | |
 | [Eigenquestions](#eigenquestions) | x | | | | |
-| [Issue trees](#issue-trees) | x | | x | x | |
-| [Inversion](#inversion) | x | | x | x | |
-| [Abstraction laddering](#abstraction-laddering) | x | x | | | |
-| [First principles](#first-principles) | x | x | | | x |
+| [Issue trees](#issue-trees) | | | | x | |
+| [Inversion](#inversion) | x | | | | |
+| [Abstraction laddering](#abstraction-laddering) | x | | | | |
+| [First principles](#first-principles) | | x | | | x |
 | [Zwicky box](#zwicky-box) | | x | | | |
 | [OODA](#ooda) | | | | x | |
 | [Minto Pyramid](#minto-pyramid) | x | | | | |
-| [Test bar](#test-bar) | | x | x | | |
+| [Test bar](#test-bar) | | | x | | |
 | [Feedback loops](#feedback-loops) | | x | | x | |
 | [Leverage points](#leverage-points) | | x | | | |
+| [Specification by example](#specification-by-example) | x | | | | |
+| [Quality scenarios](#quality-scenarios) | | x | | | |
+| [State machines](#state-machines) | | x | | | |
+| [Fault isolation](#fault-isolation) | | | | x | |
+| [Independent oracles](#independent-oracles) | | | x | | |
+| [Threat modeling](#threat-modeling) | | | x | | |
 
 ---
 
@@ -153,7 +159,7 @@ flowchart TB
 
 Separate what is true in this situation from analogy (“this is how people do it”). A first principle here is an **irreducible constraint**: it still holds if the current design is deleted. Write keepers as Meyer contracts, map reuse, invent only the gap, then **delete before add**. Craftsmanship is less surface area and sharper contracts — not Musk anecdotes or Five Whys chains.
 
-Prefer writing constraints as contracts (Meyer) over ritual “Five Whys.” After you have irreducibles, default to reusing primitives that already satisfy them. Addition-by-subtraction / Occam lives here, not as a separate tool; behavior-preserving cleanup of existing code still routes to `subtract`.
+Prefer writing constraints as contracts (Meyer) over ritual “Five Whys.” After you have irreducibles, default to reusing primitives that already satisfy them. Addition-by-subtraction / Occam lives here, not as a separate tool; behavior-preserving cleanup of existing code still routes to `subtract`. Interrupted, retried, or concurrent transitions belong in [state machines](#state-machines).
 
 ### How to rebuild from constraints
 
@@ -355,7 +361,7 @@ Untools / Chu ask “how confident am I in the problem and the solution?” For 
 
 **blast radius × evidence already in hand → required test layer**
 
-A failing test is not value; a fix is. The ideal feedback loop is fast, reliable, and isolates the failure. Chu’s Experiment / Feature / Platform model still governs *tempo*. Fowler’s pyramid is the familiar cartoon, not the whole gate.
+A failing test is not value; a fix is. The ideal feedback loop is fast, reliable, and isolates the failure. Chu’s Experiment / Feature / Platform model still governs *tempo*. Fowler’s pyramid is the familiar cartoon, not the whole gate. Where the expected result comes from is [independent oracles](#independent-oracles).
 
 ### Layers
 
@@ -515,11 +521,213 @@ flowchart TD
 
 ---
 
+## Specification by example
+
+Turn each important MUST into observable examples before implementation invents the behavior. Ambiguous words (“robust”, “fast”, “handles failure”) survive until a normal, boundary, and failure case exist. The examples are the contract’s testable surface; they are not a suggested implementation.
+
+### How to use
+
+1. For each important MUST, name actor, trigger, input, output, and failure behavior.
+2. Write three examples: **normal**, **boundary**, **failure**. A MUST with no example that could fail is incomplete.
+3. Keep required behavior separate from a proposed mechanism.
+4. Link each example to a verification method. Not every example needs a unit test.
+5. When the implementation drifts, update the example only if the user changed intent.
+
+**Stop:** each important MUST has at least one example that could fail. Skip ceremonial examples on a one-line typo fix.
+
+Failures to avoid: examples that only restate the MUST; rewriting examples to match an accidental implementation; treating a suggested library as a requirement.
+
+### Shape
+
+```mermaid
+flowchart LR
+  M["MUST"] --> N["Normal"]
+  M --> B["Boundary"]
+  M --> F["Failure"]
+  N --> V["Verification"]
+  B --> V
+  F --> V
+```
+
+### Further reading
+
+- [Cucumber: Example Mapping](https://cucumber.io/docs/bdd/example-mapping/)
+- [NASA: writing good requirements](https://www.nasa.gov/reference/appendix-c-how-to-write-a-good-requirement/)
+
+---
+
+## Quality scenarios
+
+A quality attribute (“scalable”, “reliable”) is not a decision until it has a stimulus, an environment, a required response, and a measure. One scenario is enough to reject a survivor or keep the smallest design that still holds. This is not a full ATAM workshop.
+
+### How to use
+
+1. Name the quality in one line (latency, durability, availability, modifiability, …).
+2. Fill: source of stimulus → stimulus → operating environment → affected part → required response → measure.
+3. Compare surviving designs against hard constraints first, then preferences.
+4. Record the assumption that would reverse the choice.
+
+**Stop:** one scenario the winner must meet; ordinary CRUD skips this.
+
+Failures to avoid: averaging away a hard requirement in a score; treating “microservices” as a quality; a scenario with no measure.
+
+### Shape
+
+```mermaid
+flowchart LR
+  S["Stimulus + environment"] --> R["Required response"]
+  R --> M["Measure"]
+  M --> D["Keep or reject a design"]
+```
+
+### Further reading
+
+- [SEI: reasoning about software quality attributes](https://www.sei.cmu.edu/library/reasoning-about-software-quality-attributes/)
+- [SEI: steps in ATAM](https://www.sei.cmu.edu/library/steps-in-an-architecture-tradeoff-analysis-method-quality-attribute-models-and-analysis/)
+- [Nygard: documenting architecture decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
+
+---
+
+## State machines
+
+Pre/post/invariant live in [first principles](#first-principles). This primer is the transitions those contracts must survive: interruption, retry, concurrency, and forbidden paths. A happy-path narrative hides the defects.
+
+### How to use
+
+1. List meaningful states, transition triggers, guards, and side effects. Include failure and recovery.
+2. State invariants separately from examples. Distinguish safety (never) from liveness (eventually, under assumptions).
+3. Check interrupted, repeated, and concurrent transitions — not only the happy path.
+4. Derive checks from allowed transitions, forbidden transitions, and partial sequences.
+
+**Stop:** a small table of states × those three interruptions. Skip for stateless CRUD.
+
+Failures to avoid: naming a state `completed` and calling it exactly-once; proving the diagram instead of the implementation; omitting cancellation.
+
+### Shape
+
+```mermaid
+stateDiagram-v2
+    [*] --> Pending
+    Pending --> Running: claim
+    Running --> Succeeded: commit
+    Running --> Pending: recoverable failure
+    Running --> Failed: terminal failure
+```
+
+### Further reading
+
+- [Amazon engineers: formal methods in practice](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf)
+- Meyer, [Applying “Design by Contract”](https://se.inf.ethz.ch/~meyer/publications/computer/contract.pdf) (pre/post/invariant)
+
+---
+
+## Fault isolation
+
+Narrow the location or conditions of a failure before inventing a hypothesis about the whole subsystem. Bisection searches an ordered space (commits) with a reliable good/bad test. Delta debugging shrinks a failing input or configuration while the same failure remains.
+
+### How to use
+
+1. Define the exact failure predicate. Establish repeatability.
+2. Separate environment from the artifact under investigation.
+3. Reduce: bisect history, or drop input/config subsets. Keep only reductions that preserve **this** failure.
+4. Confirm the minimized case still matches the original symptom before using it to justify a fix.
+
+**Stop:** a minimized reproducer plus evidence it is the same bug. Skip when the case is already tiny.
+
+Failures to avoid: a reducer that preserves a different error; treating one flaky observation as binary; shotgun-patching the unreduced artifact.
+
+### Shape
+
+```mermaid
+flowchart TD
+  A[Known failing case] --> B[Remove or isolate a subset]
+  B --> C{Same failure remains?}
+  C -- Yes --> D[Keep the reduction]
+  C -- No --> E[Restore and try another subset]
+  D --> F{Further useful reduction?}
+  E --> F
+  F -- Yes --> B
+  F -- No --> G[Investigate the minimized case]
+```
+
+### Further reading
+
+- [Zeller: Delta Debugging](https://www.debuggingbook.org/html/DeltaDebugger.html)
+- [Git: bisect](https://git-scm.com/docs/git-bisect)
+- [Google SRE: effective troubleshooting](https://sre.google/sre-book/effective-troubleshooting/)
+
+---
+
+## Independent oracles
+
+[Test bar](#test-bar) chooses the layer. This primer chooses the **expected result**. A check whose oracle is the implementation under test can only reproduce the same mistake.
+
+### How to use
+
+1. Name where the expected result comes from: the contract / example, a trusted reference, or an independently derived property.
+2. If it was read from the code under test, it is not an oracle. Get it from the MUST, a fixture, a spec, or a property that would still hold if this code were deleted.
+3. Do not weaken the assertion, timeout, or error report to make the check pass.
+4. A regression test should fail for the defect it claims to catch.
+
+**Stop:** every material check has a named oracle source. Skip restating this on a proof that already cites the contract example.
+
+Failures to avoid: round-trip tests that both sides get wrong the same way; snapshots that lock implementation; “the test matches the code, so the code is correct.”
+
+### Shape
+
+```mermaid
+flowchart LR
+  C["Contract / reference / property"] --> E["Expected result"]
+  I["Implementation"] --> A["Actual result"]
+  E --> Cmp["Compare"]
+  A --> Cmp
+```
+
+### Further reading
+
+- [Software Engineering at Google, ch.11 Testing Overview](https://abseil.io/resources/swe-book/html/ch11.html)
+- [Google SRE: testing for reliability](https://sre.google/sre-book/testing-reliability/)
+
+---
+
+## Threat modeling
+
+Ask what is being built, what can go wrong, what will be done about it, and whether that is adequate. For Marvin, the smallest useful pass is a **trust-boundary challenge** on high-blast work (auth, data, money, untrusted input). STRIDE is a prompt list, not a finding quota.
+
+### How to use
+
+1. Name assets, trust boundaries, entry points, and authorized actors.
+2. Trace untrusted input to privileged effects. Untrusted artifacts are data, not executable authority.
+3. Construct **one** concrete abuse or failure scenario.
+4. Inspect the control. Report location, trigger, consequence, evidence, and a check — or report no finding.
+5. STRIDE prompts: spoofing, tampering, repudiation, information disclosure, denial of service, elevation of privilege.
+
+**Stop:** one scenario + control + evidence (or an explicit “no finding” with scope). Skip for low-blast internal tools with no trust boundary.
+
+Failures to avoid: requiring N bugs; treating a second pass by the same model as independent assurance; assuming an authenticated request is authorized for every object.
+
+### Shape
+
+```mermaid
+flowchart LR
+  A["Assets + boundary"] --> S["One abuse / failure scenario"]
+  S --> C["Control"]
+  C --> E["Evidence or gap"]
+```
+
+### Further reading
+
+- [OWASP: Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/)
+- [Microsoft: STRIDE](https://learn.microsoft.com/en-us/archive/msdn-magazine/2006/november/uncover-security-design-flaws-using-the-stride-approach)
+
+---
+
 ## When to reach for which
 
 - Unknown domain / wrong next move → **Cynefin** first.
 - Stuck on which question → **Eigenquestions**; stuck splitting a given problem → **Issue trees**.
-- Spec layer wrong → **Abstraction laddering**; claim buried → **Minto Pyramid**.
-- Architecture options → **Zwicky box**; where to intervene → **Leverage points**; dynamics fighting you → **Feedback loops**.
+- Spec layer wrong → **Abstraction laddering**; claim buried → **Minto Pyramid**; MUST without a failing example → **Specification by example**.
+- Architecture options → **Zwicky box**; which option holds → **Quality scenarios**; where to intervene → **Leverage points**; dynamics fighting you → **Feedback loops**; retries/jobs/cancellation → **State machines**.
 - Before inventing code → **First principles** (contracts + reuse + delete).
-- Failure modes before ship → **Inversion**; live bug → **OODA**; what tests to write → **Test bar**.
+- Failure modes before ship → **Inversion**; live bug → **OODA**; large repro or history → **Fault isolation**; what tests to write → **Test bar**; where the expected result comes from → **Independent oracles**; auth/data/money → **Threat modeling**.
