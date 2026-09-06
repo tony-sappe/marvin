@@ -39,6 +39,40 @@ for s in "${skills[@]}"; do
   fi
 done
 
+echo "== versions =="
+want="$(awk -F'"' '/"version"/{print $4; exit}' plugin.json)"
+if [[ -z "$want" ]]; then
+  echo "MISSING version in plugin.json"; fail=1
+  want="MISSING"
+else
+  echo "OK plugin.json version $want"
+fi
+for f in .codex-plugin/plugin.json .claude-plugin/plugin.json; do
+  got="$(awk -F'"' '/"version"/{print $4; exit}' "$f")"
+  if [[ "$got" != "$want" ]]; then
+    echo "VERSION DRIFT $f (got '$got' want '$want')"; fail=1
+  else
+    echo "OK $f version $got"
+  fi
+done
+for s in "${skills[@]}"; do
+  f="skills/$s/SKILL.md"
+  got="$(awk '/^  version:/{gsub(/"/,"",$2); print $2; exit}' "$f")"
+  if [[ "$got" != "$want" ]]; then
+    echo "VERSION DRIFT $f (got '$got' want '$want')"; fail=1
+  else
+    echo "OK $f version $got"
+  fi
+done
+prompts="$(python3 -c 'import json; print(len(json.load(open(".codex-plugin/plugin.json")).get("interface",{}).get("defaultPrompt") or []))' 2>/dev/null || echo "?")"
+if [[ "$prompts" == "?" ]]; then
+  echo "SKIP defaultPrompt count (python3 unavailable)"
+elif (( prompts > 3 )); then
+  echo "TOO MANY defaultPrompt entries ($prompts; Codex keeps at most 3)"; fail=1
+else
+  echo "OK .codex-plugin defaultPrompt count $prompts"
+fi
+
 echo "== AGENTS.md =="
 alines="$(wc -l < AGENTS.md | tr -d ' ')"
 if (( alines > 40 )); then

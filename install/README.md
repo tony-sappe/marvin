@@ -58,7 +58,7 @@ Expect `marvin@marvin` → installed, enabled, version `1.2.0`. Codex reads that
 codex plugin marketplace upgrade marvin
 ```
 
-If the VERSION column stays stale after a release, remove and re-add the plugin (`codex plugin remove marvin` then `codex plugin add marvin@marvin`).
+If the VERSION column stays stale after a release, remove and re-add the plugin (`codex plugin remove marvin@marvin` then `codex plugin add marvin@marvin`).
 
 Start a **new thread/session** after install.
 
@@ -81,7 +81,7 @@ claude --plugin-dir /path/to/marvin
 gh skill install tony-sappe/marvin --all
 ```
 
-Preview first with `gh skill preview tony-sappe/marvin`.
+Non-interactive default `--agent` is `github-copilot`. Pass `--agent` for another host. Preview a named skill with `gh skill preview tony-sappe/marvin marvin`.
 
 ## Cursor / Windsurf
 

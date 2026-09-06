@@ -17,7 +17,7 @@ After a contract exists, when the user skips to design/implementation, or when v
 
 - **shrug** — climb fast; one-line note of what you skipped; ship the thin slice.
 - **paranoid** — walk the ladder; name rejected rungs; keep the safety floor.
-- **big-brain** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; run option generation when architecture forks.
+- **big-brain** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; when architecture forks, leave a short option-generation note.
 
 ## Ladder
 
@@ -46,7 +46,7 @@ For material stack or design choices:
 
 When the design is under dynamic pressure (retries, caches, autoscaling, queues) or a change is claimed as high-leverage, use the short checks in `references/ladder.md` (feedback loops + leverage rank). Primers: `../../thinking-tools.md#feedback-loops`, `../../thinking-tools.md#leverage-points`.
 
-When several real designs compete, write **one quality scenario** (stimulus, environment, required response, measure) before picking a survivor. Primer: `../../thinking-tools.md#quality-scenarios`.
+When several real designs compete, generate options (axes, CCA, survivors — see `references/ladder.md`) then write **one quality scenario** (stimulus, environment, required response, measure) before picking a survivor. Primer: `../../thinking-tools.md#quality-scenarios`. Skip option generation for ordinary CRUD.
 
 When behavior has consequential state (retries, jobs, cancellation, partial writes), list allowed vs forbidden transitions under interruption, repetition, and concurrency. Primer: `../../thinking-tools.md#state-machines`.
 

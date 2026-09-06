@@ -1,5 +1,8 @@
 # Contract — <slug>
 
+## Situation (if high blast)
+- Kind:
+- Forbidden next move:
 ## Outcome
 ## Actor
 ## Acceptance
@@ -14,6 +17,8 @@
 - In
 - Out
 ## Irreversible
+## Owner
+## Rejected placements (if layer was ambiguous)
 ## Assumptions (labeled)
 ## Stop condition
 ## Cheapest proof

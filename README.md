@@ -90,8 +90,9 @@ Commands and host matrix: [`install/README.md`](install/README.md) · [`install/
 grok plugin marketplace add tony-sappe/marvin
 grok plugin install marvin --trust
 
-# Codex — then install Marvin from /plugins
+# Codex
 codex plugin marketplace add tony-sappe/marvin
+codex plugin add marvin@marvin
 
 # Agent Skills via GitHub CLI
 gh skill install tony-sappe/marvin --all

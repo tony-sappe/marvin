@@ -19,6 +19,7 @@ Identical skill bytes. No per-host forks inside `SKILL.md`.
 ## Adapter layout (this repo)
 
 ```text
+plugin.json                     # Grok plugin identity (repo root)
 skills/<name>/SKILL.md          # canonical
 .agents/skills/<name>           # symlink → ../../skills/<name>
 .cursor/skills/<name>           # symlink → ../../skills/<name>

@@ -20,11 +20,10 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 
 | Task | Skill | Notes |
 | --- | --- | --- |
-| Draft SDD / specs / a contract | **bound-the-ask** | Write MUST / SHOULD / MAY, examples (normal / boundary / failure), scope, stop, proof |
+| Draft a contract / specs artifact | **bound-the-ask** | Write MUST / SHOULD / MAY, examples, owner, scope, stop, proof |
 | Bound an ambiguous feature ask | **bound-the-ask** | Eigenquestion if several debates block one another |
 | Write acceptance criteria / definition of done | **bound-the-ask** | Then **prove-it** when claiming met |
 | “Should we even build this?” | **bound-the-ask** → **pack-light** | Contract first; ladder may stop at “drop it” |
-| Prioritize / MoSCoW a backlog slice | **bound-the-ask** | One triage line in the contract — not a new skill |
 | ADR / architecture options | **pack-light** | After a contract if the decision is material; option gen + one quality scenario |
 | Pick a stack, vendor, or new dependency | **pack-light** | Constraints before analogies; safety floor when relevant |
 | Stuck on the wrong question | **bound-the-ask** | Eigenquestion step |
@@ -48,13 +47,13 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | Task | Skill | Notes |
 | --- | --- | --- |
 | Fix this bug / “why is this broken?” | **find-the-fault** | Observe → one hypothesis → one experiment |
-| Production incident / outage | **find-the-fault** | Stabilize first (mitigation ≠ root cause); Cynefin stamp if chaotic |
+| Production incident / outage | **find-the-fault** | Stabilize first (mitigation ≠ root cause); Cynefin stamp when ambiguous + high blast |
 | Regression after a deploy | **find-the-fault** | Last-good commit is Observe data; bisect / reduce the failing case |
 | Flaky test | **find-the-fault** | Then **prove-it** when claiming fixed |
 | CI failure with unknown cause | **find-the-fault** | If the failure mode is known and you only need proof, **prove-it** |
 | Perf problem (CPU, latency, memory) with unknown cause | **find-the-fault** | e.g. “React app uses too much Chrome memory” → measure first |
 | Repeating incident pattern (retry storm, cache stampede) | **find-the-fault** | Name opposing loop; structural fix may later use **pack-light** |
-| Suspected misconfig / “it works on my machine” | **find-the-fault** | Prefer misconfig before conspiracy |
+| Suspected misconfig / “it works on my machine” | **find-the-fault** | Observe the environment; rank hypotheses from that evidence |
 
 ### Verification and shipping
 

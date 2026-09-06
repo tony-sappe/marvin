@@ -6,24 +6,24 @@ Eighteen frameworks for framing problems, choosing designs, debugging, and decid
 
 | Tool | Bound the ask | Pack light | Prove it | Find the fault | Subtract |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Cynefin](#cynefin) | x | x | | x | |
+| [Cynefin](#cynefin) | x | | | x | |
 | [Eigenquestions](#eigenquestions) | x | | | | |
-| [Issue trees](#issue-trees) | x | | x | x | |
-| [Inversion](#inversion) | x | | x | x | |
-| [Abstraction laddering](#abstraction-laddering) | x | x | | | |
-| [First principles](#first-principles) | x | x | | | x |
+| [Issue trees](#issue-trees) | | | | x | |
+| [Inversion](#inversion) | x | | | | |
+| [Abstraction laddering](#abstraction-laddering) | x | | | | |
+| [First principles](#first-principles) | | x | | | x |
 | [Zwicky box](#zwicky-box) | | x | | | |
 | [OODA](#ooda) | | | | x | |
 | [Minto Pyramid](#minto-pyramid) | x | | | | |
-| [Test bar](#test-bar) | | x | x | | |
+| [Test bar](#test-bar) | | | x | | |
 | [Feedback loops](#feedback-loops) | | x | | x | |
 | [Leverage points](#leverage-points) | | x | | | |
-| [Specification by example](#specification-by-example) | x | | x | | |
+| [Specification by example](#specification-by-example) | x | | | | |
 | [Quality scenarios](#quality-scenarios) | | x | | | |
-| [State machines](#state-machines) | | x | x | | |
+| [State machines](#state-machines) | | x | | | |
 | [Fault isolation](#fault-isolation) | | | | x | |
 | [Independent oracles](#independent-oracles) | | | x | | |
-| [Threat modeling](#threat-modeling) | | x | x | | |
+| [Threat modeling](#threat-modeling) | | | x | | |
 
 ---
 
