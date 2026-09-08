@@ -4,7 +4,7 @@ description: Refuse to call work done without named evidence. Use when implement
 license: MIT
 metadata:
   collection: marvin
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 > No done without named evidence.
@@ -13,7 +13,6 @@ metadata:
 
 - **shrug** — cheapest decisive proof only; say what you did not run.
 - **paranoid** — map each MUST / claim to an evidence type and run the proof.
-- **big-brain** — same as paranoid, plus residual gaps table; never promote a hypothesis to done.
 
 ## Evidence types
 

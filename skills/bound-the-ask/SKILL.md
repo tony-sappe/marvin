@@ -4,7 +4,7 @@ description: Turn a request into a bounded contract before material design or co
 license: MIT
 metadata:
   collection: marvin
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 > Name the outcome before you shape the system.
@@ -13,7 +13,6 @@ metadata:
 
 - **shrug** — short contract in chat may suffice; write a file only if the user wants persistence or the ask is still fuzzy.
 - **paranoid** — write the contract artifact when the work is material or ambiguous.
-- **big-brain** — always write the artifact for material work; run a failure-first pass; stamp situation kind when blast radius is high and the path is unclear.
 
 ## Algorithm
 
@@ -36,10 +35,9 @@ metadata:
 8. When the path is ambiguous **and** blast radius is high (auth, data, money, production traffic), add one line at the top of the contract:
    - Situation kind: clear | complicated | complex | chaotic | split
    - Forbidden next move (example: "do not invent a new architecture" or "do not freeze a full PRD — spike first")
-9. **big-brain:** failure-first pass on material work. Assert the change already failed; list concrete causes; map each survivor to a non-goal, a test, or a mitigation. Put them under Risks.
-10. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under shrug vibe-coding when the outcome is obvious and the user asked to build now.
-11. If the user rejects a boundary, invalidate every downstream decision that depended on it.
-12. Lead with one disagreeable governing sentence (a claim, not a topic). A busy reader who stops after it must still know the ask.
+9. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under shrug vibe-coding when the outcome is obvious and the user asked to build now.
+10. If the user rejects a boundary, invalidate every downstream decision that depended on it.
+11. Lead with one disagreeable governing sentence (a claim, not a topic). A busy reader who stops after it must still know the ask.
 
 ## Artifact path
 

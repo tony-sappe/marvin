@@ -22,4 +22,3 @@
 ## Assumptions (labeled)
 ## Stop condition
 ## Cheapest proof
-## Risks (from failure-first pass, if run)

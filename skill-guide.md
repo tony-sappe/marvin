@@ -1,6 +1,6 @@
 # Skill guide — what to reach for
 
-Load **one** job skill at a time. Use `marvin` only to set intensity (shrug / paranoid / big-brain) or to recall the map.
+Load **one** job skill at a time. Use `marvin` only to set intensity (shrug / paranoid) or to recall the map.
 
 | Skill | Reach for it when… |
 | --- | --- |

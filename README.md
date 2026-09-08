@@ -43,8 +43,6 @@
   &middot;
   <a href="thinking-tools.md#abstraction-laddering">[Abstraction laddering]</a>
   <br>
-  <a href="thinking-tools.md#inversion">[Inversion]</a>
-  &middot;
   <a href="thinking-tools.md#zwicky-box">[Zwicky box]</a>
   &middot;
   <a href="thinking-tools.md#minto-pyramid">[Minto Pyramid]</a>
@@ -129,7 +127,6 @@ Subtract the unused auth helpers.
 ```text
 marvin shrug       # soft challenges, vibe-coding friendly
 marvin paranoid    # default
-marvin big-brain   # hard gates, failure-first, subtract hard
 ```
 
 ## Skills

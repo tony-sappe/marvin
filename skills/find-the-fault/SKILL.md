@@ -4,7 +4,7 @@ description: Debug with observation, one hypothesis, and one experiment at a tim
 license: MIT
 metadata:
   collection: marvin
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 > One hypothesis. One experiment. Then look again.
@@ -13,7 +13,6 @@ metadata:
 
 - **shrug** — short observe → one experiment; log in chat.
 - **paranoid** — write a debug log for non-trivial faults; ≤3 cycles then escalate.
-- **big-brain** — formal log always; after ~10 minutes of guessing go formal; no parallel shotgun patches.
 
 ## Algorithm
 

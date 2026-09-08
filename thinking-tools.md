@@ -1,6 +1,6 @@
 # Thinking tools
 
-Eighteen frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. These are the textbook; Marvin’s job skills (`bound-the-ask`, `pack-light`, `prove-it`, `find-the-fault`, `subtract`) are the recipes that invoke them. Do not mint a new top-level skill for each tool. Icons from [Untools](https://untools.co) where available.
+Seventeen frameworks for framing problems, choosing designs, debugging, and deciding how much proof is enough. Each section is a standalone primer. These are the textbook; Marvin’s job skills (`bound-the-ask`, `pack-light`, `prove-it`, `find-the-fault`, `subtract`) are the recipes that invoke them. Do not mint a new top-level skill for each tool. Icons from [Untools](https://untools.co) where available.
 
 ## Where they show up in Marvin
 
@@ -9,7 +9,6 @@ Eighteen frameworks for framing problems, choosing designs, debugging, and decid
 | [Cynefin](#cynefin) | x | | | x | |
 | [Eigenquestions](#eigenquestions) | x | | | | |
 | [Issue trees](#issue-trees) | | | | x | |
-| [Inversion](#inversion) | x | | | | |
 | [Abstraction laddering](#abstraction-laddering) | x | | | | |
 | [First principles](#first-principles) | | x | | | x |
 | [Zwicky box](#zwicky-box) | | x | | | |
@@ -74,42 +73,6 @@ flowchart TD
 - [Issue Trees: The Definitive Guide — Crafting Cases](https://www.craftingcases.com/issue-tree-guide/)
 - [How To Create Issue Trees / 5 Ways to be MECE](https://www.craftingcases.com/the-5-ways-to-be-mece-part-8/)
 - [Issue trees — Untools](https://untools.co/issue-trees/)
-
----
-
-## Inversion
-
-<img src="https://assets-us-01.kc-usercontent.com/c6e42f10-0ed4-0062-585c-b740aa1ad46c/b0a43abd-4007-4b37-a1cc-97a06fd518d0/inversion-icon.png" alt="Inversion icon" width="72" />
-
-Solve the problem backwards. Jacobi / Munger: invert, always invert — it is often easier to list how to fail than how to succeed.
-
-Klein’s **pre-mortem** is the team procedure: prospective hindsight. Do not ask “what might go wrong?” Assert “it is later; this already failed; explain why.”
-
-### Pre-mortem steps
-
-1. Brief the plan, constraints, and success criteria. No debate yet.
-2. Announce: we are now in the future; the change shipped; it was a fiasco. Nobody may object to a reason.
-3. Independently write numbered failure causes (2–10 minutes). System-specific, not “the cloud dies.”
-4. Round-robin: each person voices one unused reason until the list is empty. Record.
-5. Cluster. Each surviving item must map to a non-goal, a test, or a mitigation.
-6. Stop when every item is falsifiable.
-
-### Shape
-
-```mermaid
-flowchart LR
-  Plan["Plan + success criteria"] --> Future["Assume it already failed"]
-  Future --> Causes["List concrete failure causes"]
-  Causes --> Cluster["Cluster and map"]
-  Cluster --> Out["Non-goals · tests · mitigations"]
-```
-
-### Further reading
-
-- [Inversion — Farnam Street](https://fs.blog/inversion/) (Jacobi → Munger)
-- [Pre-Mortem — The Uncertainty Project](https://www.theuncertaintyproject.org/tools/pre-mortem) (Klein’s steps, free)
-- Canonical, paywalled: Klein, [Performing a Project Premortem](https://hbr.org/2007/09/performing-a-project-premortem) (HBR Sep 2007)
-- [Inversion — Untools](https://untools.co/inversion/)
 
 ---
 
@@ -730,4 +693,4 @@ flowchart LR
 - Spec layer wrong → **Abstraction laddering**; claim buried → **Minto Pyramid**; MUST without a failing example → **Specification by example**.
 - Architecture options → **Zwicky box**; which option holds → **Quality scenarios**; where to intervene → **Leverage points**; dynamics fighting you → **Feedback loops**; retries/jobs/cancellation → **State machines**.
 - Before inventing code → **First principles** (contracts + reuse + delete).
-- Failure modes before ship → **Inversion**; live bug → **OODA**; large repro or history → **Fault isolation**; what tests to write → **Test bar**; where the expected result comes from → **Independent oracles**; auth/data/money → **Threat modeling**.
+- Live bug → **OODA**; large repro or history → **Fault isolation**; what tests to write → **Test bar**; where the expected result comes from → **Independent oracles**; auth/data/money → **Threat modeling**.
