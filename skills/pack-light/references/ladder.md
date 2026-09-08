@@ -21,7 +21,7 @@ A new dependency, service, queue, cache, table, worker, cron, retry path, config
 
 ## Option generation (material architecture only)
 
-When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities (CCA), keep 3–5 survivors, name the rejects, then pick the smallest survivor that still holds. Write **one quality scenario** the winner must meet (stimulus, environment, required response, measure) before scoring. Do not score before the space exists. Under **big-brain**, leave a short note of axes + survivors + scenario + chosen path. Skip this for ordinary CRUD.
+When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities (CCA), keep 3–5 survivors, name the rejects, then pick the smallest survivor that still holds. Write **one quality scenario** the winner must meet (stimulus, environment, required response, measure) before scoring. Do not score before the space exists. Skip this for ordinary CRUD.
 
 ## Feedback loops (dynamic designs)
 

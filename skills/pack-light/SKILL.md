@@ -4,7 +4,7 @@ description: Choose and build the smallest complete system that can be trusted. 
 license: MIT
 metadata:
   collection: marvin
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 > Pack light. Stop at the first design that can be trusted.
@@ -17,7 +17,6 @@ After a contract exists, when the user skips to design/implementation, or when v
 
 - **shrug** — climb fast; one-line note of what you skipped; ship the thin slice.
 - **paranoid** — walk the ladder; name rejected rungs; keep the safety floor.
-- **big-brain** — treat every new part as guilty until it pays rent; prefer drop/reframe/platform; when architecture forks, leave a short option-generation note.
 
 ## Ladder
 
