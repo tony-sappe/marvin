@@ -125,9 +125,12 @@ Subtract the unused auth helpers.
 ### Intensity
 
 ```text
-marvin shrug       # soft challenges, vibe-coding friendly
+marvin off         # no job skills this conversation
+marvin sigh        # soft challenges, vibe-coding friendly
 marvin paranoid    # default
 ```
+
+This prompt only (does not change intensity): `skip marvin`, `no marvin`, `without marvin`, or `skip bound-the-ask` (any job skill id).
 
 ## Skills
 Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).

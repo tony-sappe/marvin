@@ -50,7 +50,7 @@ codex plugin marketplace list
 codex plugin list --marketplace marvin
 ```
 
-Expect `marvin@marvin` → installed, enabled, version `1.3.0`. Codex reads that version from `.codex-plugin/plugin.json`.
+Expect `marvin@marvin` → installed, enabled, version `1.4.0`. Codex reads that version from `.codex-plugin/plugin.json`.
 
 **Update later:**
 

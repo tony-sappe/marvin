@@ -1,17 +1,19 @@
 ---
 name: prove-it
-description: Refuse to call work done without named evidence. Use when implementing, fixing a bug, opening a PR, verifying a change, or when the user says done, prove it, check your work, or verify. Do not use as a design skill and do not run a ceremonial test suite when a cheaper proof exists.
+description: Refuse to call work done without named evidence. Use when implementing, fixing a bug, opening a PR, verifying a change, or when the user says done, prove it, check your work, or verify. Do not use as a design skill and do not run a ceremonial test suite when a cheaper proof exists. Do not use when the user says skip marvin, no marvin, without marvin, marvin off, or skip prove-it.
 license: MIT
 metadata:
   collection: marvin
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 > No done without named evidence.
 
 ## Intensity
 
-- **shrug** — cheapest decisive proof only; say what you did not run.
+If intensity is **off**, or the user said skip marvin, no marvin, without marvin, or skip prove-it, do not follow this skill this turn. Do the ask. Nothing from this collection.
+
+- **sigh** — cheapest decisive proof only; say what you did not run.
 - **paranoid** — map each MUST / claim to an evidence type and run the proof.
 
 ## Evidence types

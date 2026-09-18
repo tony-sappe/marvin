@@ -1,21 +1,23 @@
 ---
 name: pack-light
-description: Choose and build the smallest complete system that can be trusted. Use for design shape, implementation, new dependencies, new services, new stores, new APIs, queues, caches, vibe coding, or when the user says pack light, YAGNI, first principles, simplest thing, or is this too much. Do not use for behavior-preserving cleanup of existing code — use subtract for that.
+description: Choose and build the smallest complete system that can be trusted. Use for design shape, implementation, new dependencies, new services, new stores, new APIs, queues, caches, vibe coding, or when the user says pack light, YAGNI, first principles, simplest thing, or is this too much. Do not use for behavior-preserving cleanup of existing code — use subtract for that. Do not use when the user says skip marvin, no marvin, without marvin, marvin off, or skip pack-light.
 license: MIT
 metadata:
   collection: marvin
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 > Pack light. Stop at the first design that can be trusted.
 
 ## When it runs
 
-After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` — except under **shrug** when the outcome is obvious and the user asked to build now.
+After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` — except under **sigh** when the outcome is obvious and the user asked to build now.
 
 ## Intensity
 
-- **shrug** — climb fast; one-line note of what you skipped; ship the thin slice.
+If intensity is **off**, or the user said skip marvin, no marvin, without marvin, or skip pack-light, do not follow this skill this turn. Do the ask. Nothing from this collection.
+
+- **sigh** — climb fast; one-line note of what you skipped; ship the thin slice.
 - **paranoid** — walk the ladder; name rejected rungs; keep the safety floor.
 
 ## Ladder
