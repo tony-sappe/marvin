@@ -1,6 +1,6 @@
 # Skill guide — what to reach for
 
-Load **one** job skill at a time. Use `marvin` only to set intensity (shrug / paranoid) or to recall the map.
+Load **one** job skill at a time. Use `marvin` only to set intensity (`off` / `sigh` / `paranoid`) or to recall the map. Skip this collection with `skip marvin` / `no marvin` (this prompt) or `marvin off` (this conversation).
 
 | Skill | Reach for it when… |
 | --- | --- |
@@ -34,7 +34,8 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | Task | Skill | Notes |
 | --- | --- | --- |
 | Implement from a clear spec | **pack-light** | Thin end-to-end slice; then **prove-it** |
-| Vibe-code a small obvious feature | **pack-light** | Under shrug, skip a written contract when outcome is obvious |
+| Vibe-code a small obvious feature | **pack-light** | Under sigh, skip a written contract when outcome is obvious |
+| Prototype / experiment / “don't use Marvin” | none | `skip marvin` or `no marvin` this prompt; `marvin off` for the conversation |
 | Add an API, service, queue, cache, or store | **pack-light** | New parts must pay rent |
 | “Is this design too much?” | **pack-light** | Stop at first rung that holds |
 | Grow surface area / invent a primitive | **pack-light** | Delete-before-add; `Removed / not built` |
@@ -110,10 +111,11 @@ Use the next skill only when the previous job is finished.
 
 ## Tie-breakers
 
-1. **Unknown cause?** → `find-the-fault` before anything else.
-2. **Unclear outcome or material blast?** → `bound-the-ask` before design.
-3. **Same behavior, fewer parts?** → `subtract`. **New or different behavior?** → `pack-light` (after a contract if needed).
-4. **About to say done?** → `prove-it`. No other skill substitutes for evidence.
-5. **Only need the map or intensity?** → `marvin`.
+1. **Don't use Marvin?** → `skip marvin` / `no marvin` this prompt, or `marvin off` for the conversation. Nothing from this collection.
+2. **Unknown cause?** → `find-the-fault` before anything else.
+3. **Unclear outcome or material blast?** → `bound-the-ask` before design.
+4. **Same behavior, fewer parts?** → `subtract`. **New or different behavior?** → `pack-light` (after a contract if needed).
+5. **About to say done?** → `prove-it`. No other skill substitutes for evidence.
+6. **Only need the map or intensity?** → `marvin`.
 
 When two skills seem to fit, pick the one that matches the **immediate** job, finish it, then switch.

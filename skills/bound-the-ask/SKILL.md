@@ -1,17 +1,19 @@
 ---
 name: bound-the-ask
-description: Turn a request into a bounded contract before material design or code. Use when starting a feature, the ask is ambiguous, an architecture choice is open, the user says spec or brief or bound the ask, the change spans multiple files, or the work would take more than thirty minutes. Do not use for typos, one-line fixes, or a bug that already has a failing reproduction.
+description: Turn a request into a bounded contract before material design or code. Use when starting a feature, the ask is ambiguous, an architecture choice is open, the user says spec or brief or bound the ask, the change spans multiple files, or the work would take more than thirty minutes. Do not use for typos, one-line fixes, a bug that already has a failing reproduction, or when the user says skip marvin, no marvin, without marvin, marvin off, or skip bound-the-ask.
 license: MIT
 metadata:
   collection: marvin
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 > Name the outcome before you shape the system.
 
 ## Intensity
 
-- **shrug** — short contract in chat may suffice; write a file only if the user wants persistence or the ask is still fuzzy.
+If intensity is **off**, or the user said skip marvin, no marvin, without marvin, or skip bound-the-ask, do not follow this skill this turn. Do the ask. Nothing from this collection.
+
+- **sigh** — short contract in chat may suffice; write a file only if the user wants persistence or the ask is still fuzzy.
 - **paranoid** — write the contract artifact when the work is material or ambiguous.
 
 ## Algorithm
@@ -35,7 +37,7 @@ metadata:
 8. When the path is ambiguous **and** blast radius is high (auth, data, money, production traffic), add one line at the top of the contract:
    - Situation kind: clear | complicated | complex | chaotic | split
    - Forbidden next move (example: "do not invent a new architecture" or "do not freeze a full PRD — spike first")
-9. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under shrug vibe-coding when the outcome is obvious and the user asked to build now.
+9. Write the contract artifact. Do not implement in the same turn unless the user already approved the contract and explicitly asked to continue — except under sigh vibe-coding when the outcome is obvious and the user asked to build now.
 10. If the user rejects a boundary, invalidate every downstream decision that depended on it.
 11. Lead with one disagreeable governing sentence (a claim, not a topic). A busy reader who stops after it must still know the ask.
 

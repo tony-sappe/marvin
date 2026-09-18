@@ -1,10 +1,10 @@
 ---
 name: subtract
-description: Reduce an existing system while preserving behavior. Use when asked to refactor, simplify, delete dead code, collapse an abstraction, drop a dependency, clean a repo, cut tech debt, or when the user says subtract, simplify, or raptor. Do not use for greenfield design unless existing code is the thing being simplified.
+description: Reduce an existing system while preserving behavior. Use when asked to refactor, simplify, delete dead code, collapse an abstraction, drop a dependency, clean a repo, cut tech debt, or when the user says subtract, simplify, or raptor. Do not use for greenfield design unless existing code is the thing being simplified. Do not use when the user says skip marvin, no marvin, without marvin, marvin off, or skip subtract.
 license: MIT
 metadata:
   collection: marvin
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 > Same behavior. Fewer parts.
@@ -19,7 +19,9 @@ If you find a bug while subtracting, do not silently fix it. Call it out. Preser
 
 ## Intensity
 
-- **shrug** — inspection or one surgical cut; stop early.
+If intensity is **off**, or the user said skip marvin, no marvin, without marvin, or skip subtract, do not follow this skill this turn. Do the ask. Nothing from this collection.
+
+- **sigh** — inspection or one surgical cut; stop early.
 - **paranoid** — choose a mode; walk the ladder; prove the change.
 
 ## Modes — choose one before editing

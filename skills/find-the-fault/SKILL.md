@@ -1,17 +1,19 @@
 ---
 name: find-the-fault
-description: Debug with observation, one hypothesis, and one experiment at a time. Use for bugs, incidents, regressions, flaky tests, or when the user says why is this broken, find the fault, root cause, or debug. Do not use for greenfield design or behavior-preserving cleanup.
+description: Debug with observation, one hypothesis, and one experiment at a time. Use for bugs, incidents, regressions, flaky tests, or when the user says why is this broken, find the fault, root cause, or debug. Do not use for greenfield design or behavior-preserving cleanup, or when the user says skip marvin, no marvin, without marvin, marvin off, or skip find-the-fault.
 license: MIT
 metadata:
   collection: marvin
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 > One hypothesis. One experiment. Then look again.
 
 ## Intensity
 
-- **shrug** — short observe → one experiment; log in chat.
+If intensity is **off**, or the user said skip marvin, no marvin, without marvin, or skip find-the-fault, do not follow this skill this turn. Do the ask. Nothing from this collection.
+
+- **sigh** — short observe → one experiment; log in chat.
 - **paranoid** — write a debug log for non-trivial faults; ≤3 cycles then escalate.
 
 ## Algorithm
@@ -32,7 +34,7 @@ metadata:
 
 ## Artifact
 
-Prefer chat table under shrug. Otherwise in the target project:
+Prefer chat table under sigh. Otherwise in the target project:
 
 - `specs/debug-<slug>.md` (create `specs/` if needed)
 - or `docs/specs/debug-<slug>.md` if that tree is what the user uses
