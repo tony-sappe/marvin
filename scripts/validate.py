@@ -100,6 +100,9 @@ def check_skill(skill, version=None):
             errors.append('description must be a nonempty string')
         elif ': ' in desc or '<' in desc or '>' in desc:
             errors.append('description must not contain ": " or angle brackets')
+        for field in ('license', 'allowed-tools'):
+            if field in data and not isinstance(data[field], str):
+                errors.append(f'{field} must be a string')
         metadata = data.get('metadata')
         if not isinstance(metadata, dict) or metadata.get('collection') != 'marvin' or not isinstance(metadata.get('version'), str):
             errors.append('metadata must include collection: marvin and a string version')
@@ -159,7 +162,7 @@ def check_manifests(root):
                         if not (directory / skill / 'SKILL.md').is_file():
                             raise ValueError(f'{value} does not contain {skill}/SKILL.md')
             interface = data.get('interface', {})
-            if interface and not isinstance(interface, dict):
+            if not isinstance(interface, dict):
                 raise ValueError('interface must be an object')
             prompts = interface.get('defaultPrompt', []) if isinstance(interface, dict) else []
             if not isinstance(prompts, list) or len(prompts) > 3 or any(not isinstance(p, str) or not p.strip() for p in prompts):
@@ -179,11 +182,13 @@ def check_manifests(root):
                 raise ValueError('plugins must contain the marvin entry')
             source = entries[0].get('source')
             if name == '.claude-plugin/marketplace.json':
-                local_path(root, source, directory=True)
+                if local_path(root, source, directory=True) != root.resolve():
+                    raise ValueError('marketplace source must resolve to the plugin root')
             elif name == '.agents/plugins/marketplace.json':
                 if not isinstance(source, dict) or source.get('source') != 'local':
                     raise ValueError('expected a local source object')
-                local_path(root, source.get('path'), directory=True)
+                if local_path(root, source.get('path'), directory=True) != root.resolve():
+                    raise ValueError('marketplace source must resolve to the plugin root')
             elif not isinstance(source, dict) or source.get('source') != 'url' or not str(source.get('url', '')).startswith('https://'):
                 raise ValueError('expected an HTTPS URL source')
         except (TypeError, ValueError) as exc:

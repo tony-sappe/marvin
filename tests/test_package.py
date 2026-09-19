@@ -52,6 +52,21 @@ class PackageTests(unittest.TestCase):
         path.write_text(path.read_text().replace('---\n', '', 1))
         self.assertInvalid('missing or unclosed YAML frontmatter delimiters')
 
+    def test_optional_skill_fields_require_strings(self):
+        path = self.root / 'skills/pack-light/SKILL.md'
+        base = re.sub(r'^license:.*\n', '', path.read_text(), flags=re.M)
+        for field in ('license', 'allowed-tools'):
+            for value in ([], {}, None, False, 0, 'MIT'):
+                with self.subTest(field=field, value=value):
+                    path.write_text(base.replace('name: pack-light',
+                        f'name: pack-light\n{field}: {json.dumps(value)}'))
+                    if isinstance(value, str):
+                        self.assertEqual(validate(self.root), [])
+                    else:
+                        self.assertInvalid(f'{field} must be a string')
+        path.write_text(base)
+        self.assertEqual(validate(self.root), [])  # Optional fields may be absent.
+
     def test_every_manifest_must_parse(self):
         for name in PLUGINS + MARKETPLACES:
             with self.subTest(manifest=name):
@@ -73,6 +88,28 @@ class PackageTests(unittest.TestCase):
     def test_bad_codex_skill_path(self):
         self.manifest('.codex-plugin/plugin.json', lambda d: d.update(skills='./absent/'))
         self.assertInvalid('missing directory')
+
+    def test_interface_requires_object(self):
+        name = '.codex-plugin/plugin.json'
+        for value in ([], None, False, 0, '', {}):
+            with self.subTest(interface=value):
+                self.manifest(name, lambda d: d.update(interface=value))
+                if isinstance(value, dict):
+                    self.assertEqual(validate(self.root), [])
+                else:
+                    self.assertInvalid('interface must be an object')
+        self.manifest(name, lambda d: d.pop('interface'))
+        self.assertEqual(validate(self.root), [])
+
+    def test_marketplace_source_requires_plugin_root(self):
+        for name in ('.claude-plugin/marketplace.json', '.agents/plugins/marketplace.json'):
+            with self.subTest(manifest=name):
+                path = self.root / name
+                original = path.read_text()
+                source = './assets' if name.startswith('.claude') else {'source': 'local', 'path': './assets'}
+                self.manifest(name, lambda d: d['plugins'][0].update(source=source))
+                self.assertInvalid('marketplace source must resolve to the plugin root')
+                path.write_text(original)
 
     def test_hooks_declared_in_manifests(self):
         for name in PLUGINS + MARKETPLACES:
