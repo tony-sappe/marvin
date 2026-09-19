@@ -21,7 +21,7 @@ A new dependency, service, queue, cache, table, worker, cron, retry path, config
 
 ## Option generation (material architecture only)
 
-When several real designs compete, name 3–5 independent axes, give each ≥3 values, drop pairwise incompatibilities (CCA), keep 3–5 survivors, name the rejects, then pick the smallest survivor that still holds. Write **one quality scenario** the winner must meet (stimulus, environment, required response, measure) before scoring. Do not score before the space exists. Skip this for ordinary CRUD.
+When several real designs compete, use only genuine independent decision axes and feasible values; binary axes and fewer than three survivors are valid. Drop pairwise incompatibilities (CCA), name actual rejects, then pick the smallest viable survivor. Compare two directly when only two exist. Counts such as 3–5 axes or survivors are examples, never quotas. Stop generating options when the decision is supported; do not invent dimensions or relax constraints to fill a table. Write **one quality scenario** the winner must meet (stimulus, environment, required response, measure) before scoring. Do not score before the space exists. Skip this for ordinary CRUD.
 
 ## Feedback loops (dynamic designs)
 
@@ -36,7 +36,7 @@ Skip when the change is static CRUD with no dynamic pressure.
 
 ## State (consequential transitions)
 
-When retries, jobs, cancellation, or partial writes matter: list meaningful states, allowed vs forbidden transitions, and what interruption / retry / concurrency must not violate. Skip for stateless CRUD. Primer: `../../../thinking-tools.md#state-machines`.
+When retries, jobs, cancellation, or partial writes matter: list meaningful states, allowed vs forbidden transitions, and what interruption / retry / concurrency must not violate. Skip for stateless CRUD. Primer: `state-machines.md`.
 
 ## Leverage rank (claimed high-leverage changes)
 

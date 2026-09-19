@@ -14,5 +14,5 @@
 - Tests that lock implementation
 - Dead comments and ownerless TODOs
 - One concept shattered across many tiny files, or many concepts stuffed into one file
-- Duplicate validation in multiple layers
+- Duplicated policy within one trust boundary. Share policy definitions; keep independent validation at every required trust boundary. Remove a check only when it is redundant within the same trusted boundary; before deleting supplier-side enforcement, test a direct call that bypasses the caller.
 - Error handling that hides failure

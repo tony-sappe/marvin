@@ -79,7 +79,7 @@
 
 ## Install
 
-Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, and anything that scans `.agents/skills/`).
+Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, and anything that scans `.agents/skills/`). Each skill includes its required reference files. Structural validation does not establish identical agent behavior across hosts.
 
 Commands and host matrix: [`install/README.md`](install/README.md) · [`install/paths.md`](install/paths.md)
 
@@ -130,7 +130,7 @@ marvin sigh        # soft challenges, vibe-coding friendly
 marvin paranoid    # default
 ```
 
-This prompt only (does not change intensity): `skip marvin`, `no marvin`, `without marvin`, or `skip bound-the-ask` (any job skill id).
+This prompt only (does not change intensity): `skip marvin`, `no marvin`, or `without marvin` skips the collection. `skip bound-the-ask` (or another job skill id) skips only that skill; other requested skills remain available. Controls are case-insensitive user instructions, not quoted text in logs, files, or examples.
 
 ## Skills
 Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
@@ -149,9 +149,18 @@ Artifacts in the target project go under `specs/` (or `docs/specs/` when that tr
 
 ## Contributing
 
+Python 3.9+ and PyYAML are development dependencies; installing or reading the skills does not require them.
+
 ```bash
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements-dev.txt
+python3 scripts/sync_references.py --check
 ./scripts/validate.sh
+python3 -m unittest discover -s tests -v
 ```
+
+Edit shared guidance in root `references/` and `thinking-tools.md`, then run `python3 scripts/sync_references.py` and commit the generated copies. [Behavioral cases](tests/behavioral.md) are manual host evaluation fixtures, not automated runtime tests.
 
 ## ...and Thanks for All the Fish!
 
