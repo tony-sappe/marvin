@@ -14,7 +14,7 @@ Among a set of related questions, the **eigenquestion** is the most discriminati
 5. Cascade: write 1–3 principles/decisions that kill downstream bikesheds.
 6. Park remaining questions as entailed or explicitly deferred.
 
-**Stop:** one eigenquestion + ≥2 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
+**Stop:** one eigenquestion + 1–3 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
 
 ## Shape
 

@@ -50,7 +50,7 @@ codex plugin marketplace list
 codex plugin list --marketplace marvin
 ```
 
-Expect `marvin@marvin` → installed, enabled, version `1.4.0`. Codex reads that version from `.codex-plugin/plugin.json`.
+Expect `marvin@marvin` → installed, enabled, version `1.5.0`. Codex reads that version from `.codex-plugin/plugin.json`.
 
 **Update later:**
 
@@ -69,7 +69,7 @@ Start a **new thread/session** after install.
 /plugin install marvin@marvin
 ```
 
-Local checkout without marketplace:
+Local checkout for one session, without a persistent install:
 
 ```bash
 claude --plugin-dir /path/to/marvin
@@ -83,7 +83,7 @@ gh skill install tony-sappe/marvin --all
 
 A named skill can also be installed on its own; its local references are bundled. Install `--all` to enable routing between all six skills.
 
-Non-interactive default `--agent` is `github-copilot`. Pass `--agent` for another host. Preview a named skill with `gh skill preview tony-sappe/marvin marvin`.
+Non-interactive defaults are `--agent github-copilot` and `--scope project` (the current repo). Pass `--agent` for another host and `--scope user` to install for every project. Several agents, including Copilot, Cursor, and Codex, share `.agents/skills/` at project scope. Claude Code, Grok, and Windsurf do not. Preview a named skill with `gh skill preview tony-sappe/marvin marvin`.
 
 ## Cursor / Windsurf
 

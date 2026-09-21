@@ -144,7 +144,7 @@ Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
 | `find-the-fault` | Observe → one hypothesis → one experiment |
 | `subtract` | Behavior-preserving simplification |
 
-Artifacts in the target project go under `specs/` (or `docs/specs/` when that tree already exists or the user asks for it).
+Contract and debug artifacts go under `specs/` when that tree exists, or when neither tree exists. Use an existing `docs/specs/` only when `specs/` is absent. A path the user names overrides both.
 
 
 ## Contributing

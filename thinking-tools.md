@@ -381,7 +381,7 @@ Among a set of related questions, the **eigenquestion** is the most discriminati
 5. Cascade: write 1–3 principles/decisions that kill downstream bikesheds.
 6. Park remaining questions as entailed or explicitly deferred.
 
-**Stop:** one eigenquestion + ≥2 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
+**Stop:** one eigenquestion + 1–3 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
 
 ### Shape
 
@@ -496,7 +496,7 @@ Turn each important MUST into observable examples before implementation invents 
 4. Link each example to a verification method. Not every example needs a unit test.
 5. When the implementation drifts, update the example only if the user changed intent.
 
-**Stop:** each important MUST has at least one example that could fail. Skip ceremonial examples on a one-line typo fix.
+**Stop:** each important MUST has normal, boundary, and failure examples. Skip ceremonial examples on a one-line typo fix.
 
 Failures to avoid: examples that only restate the MUST; rewriting examples to match an accidental implementation; treating a suggested library as a requirement.
 
