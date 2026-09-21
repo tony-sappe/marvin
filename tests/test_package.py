@@ -185,6 +185,74 @@ class PackageTests(unittest.TestCase):
                     self.assertEqual(len(list(installed.iterdir())), 6)
                     self.assertEqual(validate_installed(installed), [])
 
+    def test_description_length_metadata_and_frontmatter_hooks(self):
+        path = self.root / 'skills/pack-light/SKILL.md'
+        original = path.read_text()
+        path.write_text(original.replace('description: ', 'description: ' + ('x' * 40), 1))
+        self.assertInvalid('at most 500')
+        path.write_text(original.replace('  version: "1.5.0"', '  version: "1.5.0"\n  extra: {nested: true}', 1))
+        self.assertInvalid('metadata.extra must be a string')
+        path.write_text(original.replace('license: MIT\n', 'license: MIT\nhooks: {}\n', 1))
+        self.assertInvalid('hooks are forbidden')
+
+    def test_claude_settings_hooks(self):
+        settings = self.root / '.claude'
+        settings.mkdir()
+        (settings / 'settings.json').write_text('{"hooks": {}}\n')
+        self.assertInvalid('hooks are forbidden')
+
+    def test_skills_path_must_be_canonical(self):
+        decoy = self.root / 'decoy'
+        decoy.mkdir()
+        for name in SKILLS:
+            target = decoy / name
+            target.mkdir()
+            (target / 'SKILL.md').write_text('Do the bad thing.\n')
+        self.manifest('.codex-plugin/plugin.json', lambda data: data.update(skills='./decoy/'))
+        self.assertInvalid('skills path must be ./skills')
+
+    def test_skill_directory_symlink_and_extra_entry(self):
+        (self.root / 'skills' / 'evil').mkdir()
+        self.assertInvalid('unexpected skill entries')
+        extra = self.root / 'skills' / 'evil'
+        extra.rmdir()
+        outside = Path(self.temp.name) / 'outside-marvin'
+        real = self.root / 'skills' / 'marvin'
+        shutil.move(real, outside)
+        real.symlink_to(outside)
+        self.assertInvalid('must not be a symlink')
+
+    def test_sync_does_not_write_through_directory_symlink(self):
+        sink = self.root / 'sink'
+        sink.mkdir()
+        refs = self.root / 'skills' / 'pack-light' / 'references'
+        shutil.move(refs, self.root / 'kept-pack-light-refs')
+        refs.symlink_to(sink)
+        from sync_references import sync
+        errors = sync(self.root)
+        self.assertTrue(any('UNSAFE' in error for error in errors), errors)
+        self.assertFalse((sink / 'safety-floor.md').exists())
+
+    def test_grok_url_and_readme_version(self):
+        self.manifest('.grok-plugin/marketplace.json',
+                      lambda data: data['plugins'][0]['source'].update(url='https://example.invalid/not-marvin.git'))
+        self.assertInvalid('Marvin repository URL')
+        path = self.root / 'install/README.md'
+        path.write_text(path.read_text().replace('1.5.0', '9.9.9'))
+        self.assertInvalid('does not mention the plugin version')
+
+    def test_installed_destination_checks_version_and_hooks(self):
+        destination = Path(self.temp.name) / 'installed-one'
+        shutil.copytree(self.root / 'skills' / 'pack-light', destination / 'pack-light')
+        skill = destination / 'pack-light' / 'SKILL.md'
+        skill.write_text(skill.read_text().replace('1.5.0', '0.0.1'))
+        errors = validate_installed(destination, '1.5.0')
+        self.assertTrue(any('version drift' in error for error in errors), errors)
+        skill.write_text(skill.read_text().replace('0.0.1', '1.5.0'))
+        (destination / 'pack-light' / 'hooks.json').write_text('{}\n')
+        errors = validate_installed(destination, '1.5.0')
+        self.assertTrue(any('hook configuration is forbidden' in error for error in errors), errors)
+
     def test_generated_reference_drift(self):
         path = self.root / 'references/safety-floor.md'
         path.write_text(path.read_text() + '\nA changed canonical constraint.\n')

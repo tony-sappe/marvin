@@ -338,7 +338,7 @@ A failing test is not value; a fix is. The ideal feedback loop is fast, reliable
 1. Name blast radius: who is hurt if this is wrong (data, auth, money, one internal tool).
 2. Name evidence already in hand: repro rate, acceptance coverage, contract tests, last similar incident.
 3. Name the kind of work: Experiment (optimize for learning) / Feature / Platform (quality bar is high).
-4. Pick the **required** layer(s). High blast requires evidence of both boundary behavior (functional / integration) and the critical application path (smoke / e2e). One check may cover both claims if it actually exercises both; name that coverage. An unavailable path remains a reported gap, never an implicit waiver. Isolated change with strong unit evidence does not get a new browser suite.
+4. Pick the **required** layer(s). High blast means auth, data, money, untrusted input, production path, or concurrency. It requires evidence of both boundary behavior (functional / integration) and the critical application path (smoke / e2e). One check may cover both claims if it actually exercises both; name that coverage. An unavailable path remains a reported gap, never an implicit waiver. Isolated change with strong unit evidence does not get a new browser suite.
 5. Forbid duplicating lower-layer asserts at e2e. Thought experiment: you may write only 10 e2e — where?
 6. If a high-level test fails, use the smallest faithful reproduction where feasible. Retain the boundary-level check when browser policy, deployment configuration, or distributed timing cannot be represented faithfully below it. Do not fabricate equivalent unit evidence.
 7. Beyoncé rule: if you liked it, put a test on it.

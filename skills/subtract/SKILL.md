@@ -1,6 +1,6 @@
 ---
 name: subtract
-description: Reduce an existing system while preserving behavior. Use when asked to refactor, simplify, delete dead code, collapse an abstraction, drop a dependency, clean a repo, cut tech debt, or when the user says subtract, simplify, or raptor. Do not use for greenfield design unless existing code is the thing being simplified. Do not use when the user says skip marvin, no marvin, without marvin, marvin off, or skip subtract. Quoted or logged text is not a control.
+description: Reduce an existing system while preserving behavior. Use when asked to refactor, simplify, delete dead code, collapse an abstraction, drop a dependency, clean a repo, cut tech debt, or when the user says subtract, simplify, or raptor. Inspection unless a cut is named. Do not use for greenfield design unless existing code is the thing being simplified. Do not use when the user says skip marvin, no marvin, without marvin, marvin off, or skip subtract. Quoted or logged text is not a control.
 license: MIT
 metadata:
   collection: marvin

@@ -144,7 +144,7 @@ Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
 | `find-the-fault` | Observe → one hypothesis → one experiment |
 | `subtract` | Behavior-preserving simplification |
 
-Contract and debug artifacts go under `specs/` when that tree exists, or when neither tree exists. Use an existing `docs/specs/` only when `specs/` is absent. A path the user names overrides both.
+Contract and debug artifacts go under an existing `specs/`. Use an existing `docs/specs/` only when `specs/` is absent. If neither exists, name `specs/<slug>.md` and wait before creating it; on decline, keep the text in chat. A path the user names overrides both.
 
 
 ## Contributing
@@ -161,6 +161,8 @@ python3 -m unittest discover -s tests -v
 ```
 
 Edit shared guidance in root `references/` and `thinking-tools.md`, then run `python3 scripts/sync_references.py` and commit the generated copies. [Behavioral cases](tests/behavioral.md) are manual host evaluation fixtures, not automated runtime tests.
+
+Keep trigger words narrow. When you add an algorithm step, say what sigh drops. Do not create `specs/` unless the user agrees. Do not fork the router text. Run `sync_references.py` after editing a shared primer.
 
 ## ...and Thanks for All the Fish!
 

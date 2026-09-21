@@ -11,7 +11,7 @@ metadata:
 
 ## When it runs
 
-After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` if installed and not skipped — except under **sigh** when the outcome is obvious and the user asked to build now.
+After a contract exists, when the user skips to design/implementation, or when vibe coding an obvious outcome. If the request is material, ambiguous, and there is no contract, say so in one line and load `bound-the-ask` if installed and not skipped. If that skill is skipped or not installed and the outcome is still unclear, stop with that line. Do not design. Under **sigh**, an obvious outcome and a request to build now does not need that handoff.
 
 ## Intensity
 
@@ -34,7 +34,7 @@ Durable copy: `references/ladder.md`. Stop at the first rung that holds.
 5. Collapse or derive
 6. Add a part that pays rent
 
-Compare complete viable designs. Choose the smallest one that stays correct, secure, operable, understandable, and reversible enough.
+Among designs that hold on the first rung that works, pick the smallest one that stays correct, secure, operable, understandable, and reversible enough.
 
 ## Constraints before analogies
 
@@ -48,7 +48,7 @@ For material stack or design choices:
 
 ## Dynamics and leverage
 
-When the design is under dynamic pressure (retries, caches, autoscaling, queues) or a change is claimed as high-leverage, use the short checks in `references/ladder.md` (feedback loops + leverage rank). Primers: `references/feedback-loops.md`, `references/leverage-points.md`.
+When the design is under dynamic pressure (retries, caches, autoscaling, queues) or a change is claimed as high-leverage, use the short checks in `references/ladder.md` (feedback loops + leverage rank). Open a primer only for the check you are about to apply. Primers: `references/feedback-loops.md`, `references/leverage-points.md`.
 
 When several real designs compete, compare genuine options (binary choices and fewer than three survivors are valid; never invent dimensions or options to meet a quota — see `references/ladder.md`) then write **one quality scenario** (stimulus, environment, required response, measure) before picking a survivor. Primer: `references/quality-scenarios.md`. Skip option generation for ordinary CRUD.
 
@@ -56,7 +56,7 @@ When behavior has consequential state (retries, jobs, cancellation, partial writ
 
 ## Safety floor
 
-Never trade these away to look small. Load `references/safety-floor.md` when touching auth, data, money, or anything concurrent.
+Never trade these away to look small. High blast means auth, data, money, untrusted input, production path, or concurrency. Load `references/safety-floor.md` for that work.
 
 ## Delivery
 

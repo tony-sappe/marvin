@@ -68,28 +68,58 @@ def expected_references(root):
     return expected
 
 
+def guarded(path, root):
+    """True when no path component from path through root is a symlink."""
+    current = path
+    root_resolved = root.resolve()
+    while True:
+        if current.is_symlink():
+            return False
+        if current.exists() and current.resolve() == root_resolved:
+            return True
+        parent = current.parent
+        if parent == current:
+            return False
+        current = parent
+
+
 def sync(root, check=False):
     expected = expected_references(root)
     errors = []
+    blocked = False
+    writes = []
     for path, text in expected.items():
-        if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+        if not guarded(path, root):
             errors.append(f'UNSAFE generated reference path: {path.relative_to(root)}')
+            blocked = True
             continue
         if path.is_file() and not path.read_text().startswith(MARKER):
             errors.append(f'REFUSING to overwrite authored reference: {path.relative_to(root)}')
+            blocked = True
             continue
         if not path.is_file() or path.read_text() != text:
-            if check:
+            if check or blocked:
                 errors.append(f'STALE OR MISSING generated reference: {path.relative_to(root)}')
             else:
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(text)
+                writes.append((path, text))
+    unlinks = []
     for path in (root / 'skills').rglob('*.md'):
-        if path.read_text().startswith(MARKER) and path not in expected:
-            if check:
-                errors.append(f'UNUSED generated reference: {path.relative_to(root)}')
-            else:
-                path.unlink()
+        if not path.is_file() or path.is_symlink() or not path.read_text().startswith(MARKER) or path in expected:
+            continue
+        if not guarded(path, root):
+            errors.append(f'UNSAFE generated reference path: {path.relative_to(root)}')
+            blocked = True
+        elif check or blocked:
+            errors.append(f'UNUSED generated reference: {path.relative_to(root)}')
+        else:
+            unlinks.append(path)
+    if blocked:
+        return errors
+    for path, text in writes:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+    for path in unlinks:
+        path.unlink()
     return errors
 
 

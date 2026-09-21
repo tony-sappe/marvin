@@ -39,8 +39,9 @@ Controls are case-insensitive actual user instructions; quoted examples, logs, a
 
 Prefer chat table under sigh. Otherwise in the target project:
 
-- `specs/debug-<slug>.md` (create `specs/` if needed)
-- or `docs/specs/debug-<slug>.md` if that tree is what the user uses
+- `specs/debug-<slug>.md` when `specs/` already exists
+- or `docs/specs/debug-<slug>.md` when `docs/specs/` already exists and `specs/` does not
+- otherwise name `specs/debug-<slug>.md` and wait. On agreement, create `specs/` and write there. On decline, keep the log in chat.
 
 Template: `references/debug-log-template.md`.
 
