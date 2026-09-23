@@ -50,7 +50,7 @@ In the **target** project (not this skill repo):
 
 1. If `specs/` exists → `specs/<slug>.md` (or `specs/contract-<slug>.md`)
 2. Else if `docs/specs/` exists → `docs/specs/<slug>.md`
-3. Else name `specs/<slug>.md` and wait. On agreement, create `specs/` and write there. On decline, keep the contract in chat.
+3. Else name `specs/<slug>.md` and do not create the directory until the user agrees. Keep the contract in chat and continue authorized work. On agreement, create `specs/` and write there.
 4. If the user asks for `docs/specs/`, create that instead
 
 Template: `references/contract-template.md`. Keep sections short. Bullets, not prose.

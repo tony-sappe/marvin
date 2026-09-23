@@ -93,8 +93,8 @@ To use Marvin inside another project, link each **canonical skill folder** from 
 
 <!-- acceptance: symlink -->
 ```bash
-marvin_repo=/absolute/path/to/marvin
-project=/absolute/path/to/project
+marvin_repo="/absolute/path/to/marvin"
+project="/absolute/path/to/project"
 mkdir -p "$project/.cursor/skills"
 for skill in "$marvin_repo"/skills/*; do
   destination="$project/.cursor/skills/$(basename "$skill")"
@@ -112,8 +112,8 @@ For a standalone copy that does not depend on the checkout location:
 
 <!-- acceptance: copy -->
 ```bash
-marvin_repo=/absolute/path/to/marvin
-project=/absolute/path/to/project
+marvin_repo="/absolute/path/to/marvin"
+project="/absolute/path/to/project"
 mkdir -p "$project/.cursor/skills"
 for skill in "$marvin_repo"/skills/*; do
   destination="$project/.cursor/skills/$(basename "$skill")"

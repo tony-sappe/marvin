@@ -216,19 +216,32 @@ def check_manifests(root):
     return version, errors
 
 
-def hook_errors(root):
+def directory_hook_errors(directory, label):
     errors = []
-    settings = root / '.claude' / 'settings.json'
-    if settings.is_file():
-        try:
-            no_hook_declarations(read_json(settings), '.claude/settings.json')
-        except (OSError, ValueError) as exc:
-            errors.append(f'.claude/settings.json: {exc}')
-    for directory, dirs, files in os.walk(root):
+    for current, dirs, files in os.walk(directory):
         dirs[:] = [d for d in dirs if d not in {'.git', '.venv', 'node_modules', '__pycache__'}]
         if 'hooks' in dirs or 'hooks.json' in files:
-            errors.append(f'{Path(directory).relative_to(root)}: hook configuration is forbidden')
+            rel = Path(current).relative_to(directory)
+            where = label if rel == Path('.') else f'{label}/{rel.as_posix()}'
+            errors.append(f'{where}: hook configuration is forbidden')
     return errors
+
+
+def settings_hook_errors(root):
+    errors = []
+    for name in ('.claude/settings.json', '.claude/settings.local.json'):
+        settings = root / name
+        if not settings.is_file():
+            continue
+        try:
+            no_hook_declarations(read_json(settings), name)
+        except (OSError, ValueError) as exc:
+            errors.append(f'{name}: {exc}')
+    return errors
+
+
+def hook_errors(root):
+    return settings_hook_errors(root) + directory_hook_errors(root, '.')
 
 
 def shared_phrase_errors(root, version):
@@ -302,6 +315,8 @@ def validate_installed(root, version=None):
             errors.append(f'unknown installed skill: {folder.name}')
             continue
         errors.extend(check_skill(folder, version))
+        if folder.is_symlink():
+            errors.extend(directory_hook_errors(folder.resolve(), folder.name))
     errors.extend(hook_errors(root))
     return errors
 

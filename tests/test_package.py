@@ -171,35 +171,52 @@ class PackageTests(unittest.TestCase):
         guide = (self.root / 'install/README.md').read_text()
         commands = re.findall(r'<!-- acceptance: (?:symlink|copy) -->\n```bash\n(.*?)\n```', guide, re.S)
         self.assertEqual(len(commands), 2)
+        source = Path(self.temp.name) / 'marvin repo'
+        source.symlink_to(self.root)
         from validate import ADAPTERS
         for snippet in commands:
             for adapter in ADAPTERS:
-                with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as destination:
+                with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as parent:
+                    destination = Path(parent) / 'my project'
                     script = (snippet
-                              .replace('/absolute/path/to/marvin', str(self.root))
-                              .replace('/absolute/path/to/project', destination)
+                              .replace('/absolute/path/to/marvin', str(source))
+                              .replace('/absolute/path/to/project', str(destination))
                               .replace('.cursor/skills', adapter))
+                    self.assertIn(f'marvin_repo="{source}"', script)
+                    self.assertIn(f'project="{destination}"', script)
                     result = subprocess.run(['bash', '-eu', '-c', script], capture_output=True, text=True)
                     self.assertEqual(result.returncode, 0, result.stderr)
-                    installed = Path(destination) / adapter
+                    installed = destination / adapter
                     self.assertEqual(len(list(installed.iterdir())), 6)
                     self.assertEqual(validate_installed(installed), [])
 
     def test_description_length_metadata_and_frontmatter_hooks(self):
         path = self.root / 'skills/pack-light/SKILL.md'
         original = path.read_text()
-        path.write_text(original.replace('description: ', 'description: ' + ('x' * 40), 1))
+        description = re.search(r'^description: (.*)$', original, re.M).group(1)
+        padded = description + ('x' * (501 - len(description)))
+        self.assertGreater(len(padded), 500)
+        path.write_text(original.replace(f'description: {description}', f'description: {padded}', 1))
+        self.assertIn(padded, path.read_text())
         self.assertInvalid('at most 500')
-        path.write_text(original.replace('  version: "1.5.0"', '  version: "1.5.0"\n  extra: {nested: true}', 1))
+        version = json.loads((self.root / 'plugin.json').read_text())['version']
+        mutated = original.replace(f'  version: "{version}"', f'  version: "{version}"\n  extra: {{nested: true}}', 1)
+        self.assertNotEqual(mutated, original)
+        path.write_text(mutated)
         self.assertInvalid('metadata.extra must be a string')
         path.write_text(original.replace('license: MIT\n', 'license: MIT\nhooks: {}\n', 1))
+        self.assertIn('hooks: {}', path.read_text())
         self.assertInvalid('hooks are forbidden')
 
     def test_claude_settings_hooks(self):
         settings = self.root / '.claude'
         settings.mkdir()
-        (settings / 'settings.json').write_text('{"hooks": {}}\n')
-        self.assertInvalid('hooks are forbidden')
+        for name in ('settings.json', 'settings.local.json'):
+            with self.subTest(file=name):
+                for child in settings.iterdir():
+                    child.unlink()
+                (settings / name).write_text('{"hooks": {}}\n')
+                self.assertInvalid('hooks are forbidden')
 
     def test_skills_path_must_be_canonical(self):
         decoy = self.root / 'decoy'
@@ -238,19 +255,30 @@ class PackageTests(unittest.TestCase):
                       lambda data: data['plugins'][0]['source'].update(url='https://example.invalid/not-marvin.git'))
         self.assertInvalid('Marvin repository URL')
         path = self.root / 'install/README.md'
-        path.write_text(path.read_text().replace('1.5.0', '9.9.9'))
+        version = json.loads((self.root / 'plugin.json').read_text())['version']
+        self.assertIn(version, path.read_text())
+        path.write_text(path.read_text().replace(version, '9.9.9'))
+        self.assertNotIn(version, path.read_text())
         self.assertInvalid('does not mention the plugin version')
 
     def test_installed_destination_checks_version_and_hooks(self):
+        version = json.loads((self.root / 'plugin.json').read_text())['version']
         destination = Path(self.temp.name) / 'installed-one'
         shutil.copytree(self.root / 'skills' / 'pack-light', destination / 'pack-light')
         skill = destination / 'pack-light' / 'SKILL.md'
-        skill.write_text(skill.read_text().replace('1.5.0', '0.0.1'))
-        errors = validate_installed(destination, '1.5.0')
+        mutated = skill.read_text().replace(f'version: "{version}"', 'version: "0.0.1"', 1)
+        self.assertNotEqual(mutated, skill.read_text())
+        skill.write_text(mutated)
+        errors = validate_installed(destination, version)
         self.assertTrue(any('version drift' in error for error in errors), errors)
-        skill.write_text(skill.read_text().replace('0.0.1', '1.5.0'))
+        skill.write_text(skill.read_text().replace('0.0.1', version))
         (destination / 'pack-light' / 'hooks.json').write_text('{}\n')
-        errors = validate_installed(destination, '1.5.0')
+        errors = validate_installed(destination, version)
+        self.assertTrue(any('hook configuration is forbidden' in error for error in errors), errors)
+        linked = Path(self.temp.name) / 'installed-link'
+        linked.mkdir()
+        (linked / 'pack-light').symlink_to(destination / 'pack-light')
+        errors = validate_installed(linked, version)
         self.assertTrue(any('hook configuration is forbidden' in error for error in errors), errors)
 
     def test_generated_reference_drift(self):

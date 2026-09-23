@@ -41,7 +41,7 @@ Prefer chat table under sigh. Otherwise in the target project:
 
 - `specs/debug-<slug>.md` when `specs/` already exists
 - or `docs/specs/debug-<slug>.md` when `docs/specs/` already exists and `specs/` does not
-- otherwise name `specs/debug-<slug>.md` and wait. On agreement, create `specs/` and write there. On decline, keep the log in chat.
+- otherwise name `specs/debug-<slug>.md` and do not create the directory until the user agrees. Keep the log in chat and continue diagnosis. On agreement, create `specs/` and write there.
 
 Template: `references/debug-log-template.md`.
 

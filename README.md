@@ -144,7 +144,7 @@ Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
 | `find-the-fault` | Observe → one hypothesis → one experiment |
 | `subtract` | Behavior-preserving simplification |
 
-Contract and debug artifacts go under an existing `specs/`. Use an existing `docs/specs/` only when `specs/` is absent. If neither exists, name `specs/<slug>.md` and wait before creating it; on decline, keep the text in chat. A path the user names overrides both.
+Contract and debug artifacts go under an existing `specs/`. Use an existing `docs/specs/` only when `specs/` is absent. If neither exists, name `specs/<slug>.md` and do not create the directory until the user agrees. Keep the text in chat and continue authorized work. A path the user names overrides both.
 
 
 ## Contributing
