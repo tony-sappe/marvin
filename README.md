@@ -79,7 +79,7 @@
 
 ## Install
 
-Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, and anything that scans `.agents/skills/`).
+Works as a plugin on **Grok Build**, **Codex**, and **Claude Code**. Other agents discover skills from this repo (Cursor, Windsurf, and anything that scans `.agents/skills/`). Each skill includes its required reference files. Structural validation does not establish identical agent behavior across hosts.
 
 Commands and host matrix: [`install/README.md`](install/README.md) · [`install/paths.md`](install/paths.md)
 
@@ -130,7 +130,7 @@ marvin sigh        # soft challenges, vibe-coding friendly
 marvin paranoid    # default
 ```
 
-This prompt only (does not change intensity): `skip marvin`, `no marvin`, `without marvin`, or `skip bound-the-ask` (any job skill id).
+This prompt only (does not change intensity): `skip marvin`, `no marvin`, or `without marvin` skips the collection. `skip bound-the-ask` (or another job skill id) skips only that skill; other requested skills remain available. Controls are case-insensitive user instructions, not quoted text in logs, files, or examples.
 
 ## Skills
 Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
@@ -144,14 +144,25 @@ Full instructions live in [`skills/`](skills/) (`SKILL.md` per skill).
 | `find-the-fault` | Observe → one hypothesis → one experiment |
 | `subtract` | Behavior-preserving simplification |
 
-Artifacts in the target project go under `specs/` (or `docs/specs/` when that tree already exists or the user asks for it).
+Contract and debug artifacts go under an existing `specs/`. Use an existing `docs/specs/` only when `specs/` is absent. If neither exists, name `specs/<slug>.md` and do not create the directory until the user agrees. Keep the text in chat and continue authorized work. A path the user names overrides both.
 
 
 ## Contributing
 
+Python 3.9+ and PyYAML are development dependencies; installing or reading the skills does not require them.
+
 ```bash
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements-dev.txt
+python3 scripts/sync_references.py --check
 ./scripts/validate.sh
+python3 -m unittest discover -s tests -v
 ```
+
+Edit shared guidance in root `references/` and `thinking-tools.md`, then run `python3 scripts/sync_references.py` and commit the generated copies. [Behavioral cases](tests/behavioral.md) are manual host evaluation fixtures, not automated runtime tests.
+
+Keep trigger words narrow. When you add an algorithm step, say what sigh drops. Do not create `specs/` unless the user agrees. Do not fork the router text. Run `sync_references.py` after editing a shared primer.
 
 ## ...and Thanks for All the Fish!
 

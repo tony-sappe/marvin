@@ -8,3 +8,7 @@ Thumbs.db
 .vscode/
 *.swp
 *~
+.venv/
+__pycache__/
+*.pyc
+.python-version

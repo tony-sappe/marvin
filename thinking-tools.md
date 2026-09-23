@@ -131,8 +131,8 @@ Prefer writing constraints as contracts (Meyer) over ritual “Five Whys.” Aft
 3. Write keepers as contracts:
    - **precondition** — caller must guarantee
    - **postcondition** — supplier must deliver
-   - **invariant** — always true in observable states  
-   One check lives in one place — not both caller and supplier.
+   - **invariant** — always true in observable states.
+   Share policy definitions; keep independent validation at every required trust boundary. Remove a check only when it is redundant within the same trusted boundary; before deleting supplier-side enforcement, test a direct call that bypasses the caller.
 4. For each invariant, name the existing primitive or library that already satisfies it. Reuse is the default.
 5. **Delete before add.** Before inventing or growing lifecycle surface area: list what can be deleted, demoted, or reused. When net surface grows, require a `Removed / not built` note (or explicit “nothing to delete because…”).
 6. Rebuild only the gap. Analogies (“like Netflix”) wait until steps 2–5 exist.
@@ -221,7 +221,7 @@ Paired with scientific debugging (Zeller): one hypothesis, one prediction, one e
 4. **Decide / Act** — one experiment that would kill the hypothesis if false. Collecting more data counts. Not twelve changes in parallel.
 5. If it matches, refine. If not, replace the hypothesis.
 6. Keep a logbook row: hypothesis / prediction / experiment / observation / conclusion.
-7. Loop ≤3 cycles, then escalate. After ~10 minutes of guessing, go formal.
+7. Count consecutive cycles without progress, not total experiments. A narrowed fault, eliminated candidate, or faithful reproducer resets the count. After three non-progress cycles, a budget limit, unavailable evidence, or missing authority, escalate with known facts, the blocker, and the next input needed. Resume when that is resolved.
 
 ### Shape
 
@@ -253,10 +253,10 @@ Zwicky via Ritchey: **morphological analysis**. Decompose a problem into indepen
 
 ### How to run one
 
-1. Name 3–5 **independent** axes. Dependent axes (OS and “Linux-only feature”) invalidate the box.
-2. At least 3 values each. Product of sizes is the formal space.
+1. Name only genuine **independent** decision axes; counts such as 3–5 are examples, never quotas. Dependent axes (OS and “Linux-only feature”) invalidate the box.
+2. Use feasible values only; binary axes are valid. Product of sizes is the formal space. Compare two designs directly when only two exist.
 3. Pairwise CCA: logical contradictions first, then empirical. No “I don’t like it” yet.
-4. Keep 3–5 internally consistent configs that survive constraints.
+4. Keep the internally consistent configurations that survive constraints, even if fewer than three. Stop generating options when the decision is supported; do not invent dimensions or relax constraints to fill a table.
 5. Optional: weighted decision matrix **after** the box, with factors written before scores.
 6. Failures to avoid: a huge box for simple CRUD; scoring first; skipping CCA (fake completeness).
 
@@ -266,7 +266,7 @@ Zwicky via Ritchey: **morphological analysis**. Decompose a problem into indepen
 flowchart TB
   Axes["Independent axes A · B · C"] --> Grid["All combinations"]
   Grid --> CCA["Drop pairwise incompatibilities"]
-  CCA --> Keep["3–5 consistent survivors"]
+  CCA --> Keep["Feasible survivors"]
   Keep --> Score["Optional scoring last"]
 ```
 
@@ -338,9 +338,9 @@ A failing test is not value; a fix is. The ideal feedback loop is fast, reliable
 1. Name blast radius: who is hurt if this is wrong (data, auth, money, one internal tool).
 2. Name evidence already in hand: repro rate, acceptance coverage, contract tests, last similar incident.
 3. Name the kind of work: Experiment (optimize for learning) / Feature / Platform (quality bar is high).
-4. Pick the **required** layer(s). High blast always includes functional + a smoke / e2e path even when you “feel sure.” Isolated change with strong unit evidence does not get a new browser suite.
+4. Pick the **required** layer(s). High blast means auth, data, money, untrusted input, production path, or concurrency. It requires evidence of both boundary behavior (functional / integration) and the critical application path (smoke / e2e). One check may cover both claims if it actually exercises both; name that coverage. An unavailable path remains a reported gap, never an implicit waiver. Isolated change with strong unit evidence does not get a new browser suite.
 5. Forbid duplicating lower-layer asserts at e2e. Thought experiment: you may write only 10 e2e — where?
-6. If a high-level test fails: replicate it as a unit / functional test first, then fix.
+6. If a high-level test fails, use the smallest faithful reproduction where feasible. Retain the boundary-level check when browser policy, deployment configuration, or distributed timing cannot be represented faithfully below it. Do not fabricate equivalent unit evidence.
 7. Beyoncé rule: if you liked it, put a test on it.
 8. Optional **RAT**: name the riskiest assumption → cheapest test that kills it.
 9. Failures to avoid: confidence-as-logits; high confidence skips tests; low confidence skips shipping *and* skips tests; ice-cream cone of e2e. 70/20/10 is a first guess, not a quota.
@@ -381,7 +381,7 @@ Among a set of related questions, the **eigenquestion** is the most discriminati
 5. Cascade: write 1–3 principles/decisions that kill downstream bikesheds.
 6. Park remaining questions as entailed or explicitly deferred.
 
-**Stop:** one eigenquestion + ≥2 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
+**Stop:** one eigenquestion + 1–3 cascading decisions named; remaining items entailed or parked. **Not for every decision.**
 
 ### Shape
 
@@ -496,7 +496,7 @@ Turn each important MUST into observable examples before implementation invents 
 4. Link each example to a verification method. Not every example needs a unit test.
 5. When the implementation drifts, update the example only if the user changed intent.
 
-**Stop:** each important MUST has at least one example that could fail. Skip ceremonial examples on a one-line typo fix.
+**Stop:** each important MUST has normal, boundary, and failure examples. Skip ceremonial examples on a one-line typo fix.
 
 Failures to avoid: examples that only restate the MUST; rewriting examples to match an accidental implementation; treating a suggested library as a requirement.
 

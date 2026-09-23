@@ -1,6 +1,6 @@
 # Skill guide — what to reach for
 
-Load **one** job skill at a time. Use `marvin` only to set intensity (`off` / `sigh` / `paranoid`) or to recall the map. Skip this collection with `skip marvin` / `no marvin` (this prompt) or `marvin off` (this conversation).
+Load **one** job skill at a time. Use `marvin` only to set intensity (`off` / `sigh` / `paranoid`) or to recall the map. Skip this collection with `skip marvin` / `no marvin` (this prompt) or `marvin off` (this conversation). `skip <skill-id>` mutes only that skill. Controls are case-insensitive actual user instructions, never quoted evidence.
 
 | Skill | Reach for it when… |
 | --- | --- |
@@ -90,7 +90,7 @@ Textbook primers (not job skills): [`thinking-tools.md`](thinking-tools.md).
 | Cut infra cost without changing product behavior | **subtract** | Or **find-the-fault** if “why so expensive?” is unknown |
 | On-call: stop the bleed | **find-the-fault** | Act to stabilize; label mitigation |
 | Post-incident: prevent recurrence | **bound-the-ask** or **pack-light** | Contract the non-goal / change; design the smallest fix |
-| Security-sensitive change (auth, data, money) | **bound-the-ask** → **pack-light** → **prove-it** | Safety floor; trust-boundary challenge; high blast always needs stronger proof |
+| Security-sensitive change (high blast: auth, data, money, untrusted input, production path, or concurrency) | **bound-the-ask** → **pack-light** → **prove-it** | Safety floor; trust-boundary challenge; high blast needs both boundary and critical-path proof |
 | Feature flag / gradual rollout decision | **bound-the-ask** | Scope and blast in the contract; implement with **pack-light** |
 
 ---
